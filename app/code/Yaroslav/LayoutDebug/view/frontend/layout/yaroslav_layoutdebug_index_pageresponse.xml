@@ -18,6 +18,15 @@
                        name="yaroslav.layout.debug.text.block.with.template"
                        template="Yaroslav_LayoutDebug::demo.phtml"
                 />
+                <block class="Magento\Framework\View\Element\Template"
+                       name="yaroslav.layout.debug.parent.block"
+                       template="Yaroslav_LayoutDebug::parent_block.phtml"
+                >
+                    <block class="Magento\Framework\View\Element\Template"
+                           name="yaroslav.layout.debug.child.block"
+                           template="Yaroslav_LayoutDebug::parent_block/child_block.phtml"
+                    />
+                </block>
             </container>
         </referenceContainer>
     </body>
