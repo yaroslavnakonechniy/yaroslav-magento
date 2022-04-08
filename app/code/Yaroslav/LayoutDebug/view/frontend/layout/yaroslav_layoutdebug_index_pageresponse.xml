@@ -22,10 +22,27 @@
                        name="yaroslav.layout.debug.parent.block"
                        template="Yaroslav_LayoutDebug::parent_block.phtml"
                 >
-                    <block class="Magento\Framework\View\Element\Template"
-                           name="yaroslav.layout.debug.child.block"
-                           template="Yaroslav_LayoutDebug::parent_block/child_block.phtml"
-                    />
+                        <block class="Magento\Framework\View\Element\Template"
+                               name="yaroslav.layout.debug.child.block"
+                               template="Yaroslav_LayoutDebug::parent_block/child_block.phtml"
+                        >
+                        <arguments>
+                            <argument name="boolean_parameter" xsi:type="boolean">false</argument>
+                            <argument name="string_parameter" xsi:type="string">Demo string</argument>
+                            <argument name="int_parameter" xsi:type="number">777</argument>
+                            <argument name="float_parameter" xsi:type="number">777.77</argument>
+                            <argument name="null_parameter" xsi:type="null"/>
+                            <argument name="array_parameter" xsi:type="array">
+                                <item name="array_element_1" xsi:type="string">Array Element 1</item>
+                                <item name="array_element_2" xsi:type="string">Array Element 2</item>
+                            </argument>
+                            <argument name="url_parameter" xsi:type="url" path="yaroslav_layout_debug/index/layoutresponse"/>
+                            <argument name="service_url_parameter" xsi:type="serviceUrl" path="yaroslav_layout_debug/index/layoutresponse"/>
+                            <argument name="options_parameter" xsi:type="options" model="Yaroslav\LayoutDebug\Model\Options"/>
+                            <argument name="view_model" xsi:type="object">Yaroslav\LayoutDebug\ViewModel\Demo</argument>
+                            <argument name="helper_call_result" xsi:type="helper" helper="Yaroslav\LayoutDebug\Helper\Data::getLoremIpsumText"/>
+                        </arguments>
+                    </block>
                 </block>
             </container>
         </referenceContainer>
