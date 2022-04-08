@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd"
+>
+    <router id="standard">
+        <route id="yaroslav_layoutdebug" frontName="ya-roslav-layout-debug">
+            <module name="Yaroslav_LayoutDebug"/>
+        </route>
+    </router>
+</config>
+
+
+    <!--
+    https://yaroslav-n-magento.local/ya-roslav-layout-debug/index/controllerclass
+    -->

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout_generic.xsd">
+    <container name="root" label="Root">
+        <block name="yaroslav.layout.debug.footer.text"
+               class="Magento\Framework\View\Element\Text"
+               before="-"
+        >
+            <arguments>
+                <argument name="text" translate="true" xsi:type="string"><![CDATA[{DV.Campus} Text block demo]]></argument>
+            </arguments>
+        </block>
+    </container>
+</layout>
