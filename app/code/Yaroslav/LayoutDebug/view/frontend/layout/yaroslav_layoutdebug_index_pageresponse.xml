@@ -5,8 +5,8 @@
 >
     <body>
         <referenceContainer name="content">
-            <container name="yaroslav.layout.debug.footer" htmlTag="div" htmlClass="ya-roslav-layout-debug">
-                <block name="yaroslav.layout.debug.footer.text"
+            <container name="yaroslav.layout.debug.container" htmlTag="div" htmlClass="ya-roslav-layout-debug">
+                <block name="yaroslav.layout.debug.text.block"
                        class="Magento\Framework\View\Element\Text"
                        before="-"
                 >
@@ -14,6 +14,10 @@
                         <argument name="text" translate="true" xsi:type="string"><![CDATA[{DV.Campus} Text block demo]]></argument>
                     </arguments>
                 </block>
+                <block class="Magento\Framework\View\Element\Template"
+                       name="yaroslav.layout.debug.text.block.with.template"
+                       template="Yaroslav_LayoutDebug::demo.phtml"
+                />
             </container>
         </referenceContainer>
     </body>
