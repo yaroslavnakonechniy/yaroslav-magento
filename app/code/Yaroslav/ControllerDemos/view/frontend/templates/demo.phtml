@@ -1,0 +1,26 @@
+<?php
+/**
+ * @var \Magento\Framework\View\Element\Template $block
+ */
+?>
+<!--<p>--><?//= $block->getUrl('yaroslavn_controllerdemo/foobar_yetanotherfolder/pageresponsedemo') ?><!--</p>-->
+<p></p>
+<html>
+<head>
+</head>
+<body>
+<a href="https://yaroslav-n-magento.local/ya-roslav-controller-demos/foobar_yetanotherfolder/redirectresponsedemo">RedirectResponseDemo</a><br>
+<a href="https://yaroslav-n-magento.local/ya-roslav-controller-demos/foobar_yetanotherfolder/pagejsonresponsedemo">JsonResponseDemo</a><br>
+<a href="https://yaroslav-n-magento.local/ya-roslav-controller-demos/foobar_yetanotherfolder/forwardresponsedemo">ForwardResponseDemo</a><br>
+<br><br>
+
+<form method="get" action="pageresponsedemo">
+    <label> vendor name:</label><br>
+    <input type="text" name="vendor" value="Yaroslav"><br><br>
+    <label> module name:</label><br>
+    <input type="text" name="module" value="Yaroslav_ControllerDemos"><br><br>
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
+

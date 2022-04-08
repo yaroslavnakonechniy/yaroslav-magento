@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd"
+      layout="1column"
+>
+    <body>
+        <referenceContainer name="content">
+            <container name="yaroslav.controller.demos.container" htmlTag="div" htmlClass="ya-roslav-controller-demos">
+                <block name="yaroslav.controller.demos.text.block"
+                       class="Magento\Framework\View\Element\Text"
+                       before="-"
+                >
+                    <arguments>
+                        <argument name="text" translate="true" xsi:type="string"><![CDATA[Html page controller PageJsonResponseDemo]]></argument>
+                    </arguments>
+                </block>
+                <block class="Magento\Framework\View\Element\Template"
+                       name="yaroslav.controller.demos.text.block.with.template"
+                       template="Yaroslav_ControllerDemos::demojson.phtml"
+                />
+            </container>
+        </referenceContainer>
+    </body>
+</page>
