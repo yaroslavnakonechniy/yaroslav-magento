@@ -6,3 +6,34 @@
  */
 ?>
 <h3>This is a child block</h3>
+<h4>Simple type parameters</h4>
+<ul>
+    <li>Boolean parameter: <?= var_export($block->getData('boolean_parameter'), true) ?></li>
+    <li>String parameter: <?= $block->getData('string_parameter') ?></li>
+    <li>Int parameter: <?= $block->getData('int_parameter') ?></li>
+    <li>Float parameter: <?= $block->getData('float_parameter') ?></li>
+    <li>Null parameter: <?= var_export($block->getData('null_parameter'), true) ?></li>
+    <li>URL parameter: <a href="<?= $block->getData('url_parameter') ?>"><?= $block->getData('url_parameter') ?></a></li>
+    <li>Service URL parameter (API, not controller!): <a href="<?= $block->getData('service_url_parameter') ?>"><?= $block->getData('service_url_parameter') ?></a></li>
+    <li>Helper call result: <?= $block->getData('helper_call_result') ?></li>
+</ul>
+
+<h4>Array parameter</h4>
+<ul>
+    <?php foreach ($block->getData('array_parameter') as $key => $value) : ?>
+        <li>Key &quot;<?= $key ?>&quot; has value &quot;<?= $value ?>&quot;</li>
+    <?php endforeach; ?>
+</ul>
+
+<h4>Options parameter</h4>
+<label for="test-select" style="display: none;">Select to output demo data</label>
+<select id="test-select" name="test_select">
+    <?php /** @var */
+    foreach ($block->getData('options_parameter') as $option) :
+        ?>
+        <option value="<?= $option['value'] ?>" label="<?= $option['label'] ?>"><?= $option['label'] ?></option>
+    <?php endforeach; ?>
+</select>
+
+<h4>ViewModel parameter</h4>
+<p>ViewModel is instance of: \<?= get_class($block->getData('view_model')) ?></p>

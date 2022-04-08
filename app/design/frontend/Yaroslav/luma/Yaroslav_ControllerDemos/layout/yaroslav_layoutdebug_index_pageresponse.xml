@@ -6,5 +6,19 @@
     <body>
         <referenceBlock  name="yaroslav.layout.debug.text.block" remove="true" />
 
+        <referenceBlock name="yaroslav.layout.debug.child.block">
+            <arguments>
+                <argument name="boolean_parameter" xsi:type="boolean">true</argument>
+                <argument name="string_parameter" xsi:type="string">Demo string for .local website</argument>
+                <argument name="int_parameter" xsi:type="number">777</argument>
+                <argument name="array_parameter" xsi:type="array">
+                    <item name="array_element_1" xsi:type="null"/>
+                    <item name="array_element_2" xsi:type="null"/>
+                    <item name="array_element_3" xsi:type="string">Array Element 3</item>
+                    <item name="array_element_4" xsi:type="string">Array Element 4</item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+
     </body>
 </page>
