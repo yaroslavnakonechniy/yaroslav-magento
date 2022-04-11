@@ -9,10 +9,10 @@ class DiscountRequest extends \Magento\Framework\Model\ResourceModel\Db\Abstract
     protected $_idFieldName = 'discount_request_id';
 
     /**
-     * @inheritDoc
+     * @var string $_idFieldName
      */
     protected function _construct(): void
     {
-        $this->_init('dv_campus_personal_discount_request', 'discount_request_id');
+        $this->_init('ya_roslav_personal_discount_request', 'discount_request_id');
     }
 }
