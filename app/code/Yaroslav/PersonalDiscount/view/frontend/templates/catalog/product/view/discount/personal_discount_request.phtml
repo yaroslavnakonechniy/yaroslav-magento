@@ -56,6 +56,7 @@ $product = $block->getData('product');
         </fieldset>
         <div class="actions-toolbar">
             <div class="primary">
+                <?= $block->getBlockHtml('formkey') ?>
                 <input type="hidden"
                        name="product_id"
                        value="<?= $escaper->escapeHtmlAttr((int) $product->getId()) ?>"

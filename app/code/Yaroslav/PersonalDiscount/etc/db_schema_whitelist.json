@@ -1,0 +1,26 @@
+{
+    "ya_roslav_personal_discount_request": {
+        "column": {
+            "discount_request_id": true,
+            "product_id": true,
+            "customer_id": true,
+            "name": true,
+            "email": true,
+            "message": true,
+            "store_id": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "index": {
+            "YA_ROSLAV_PERSONAL_DISCOUNT_REQUEST_PRODUCT_ID": true,
+            "YA_ROSLAV_PERSONAL_DISCOUNT_REQUEST_CUSTOMER_ID": true,
+            "YA_ROSLAV_PERSONAL_DISCOUNT_REQUEST_STORE_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_79223374ECA112B83807C7640FB70758": true,
+            "FK_06C66322B28A2D324FC166EC4CFA66EC": true,
+            "FK_4CA7863BAD1D1E7EE4B766D98CF29434": true
+        }
+    }
+}

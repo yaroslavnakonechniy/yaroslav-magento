@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="ya_roslav_personal_discount_request" resource="default" engine="innodb" comment="Personal Discount">
+        <column xsi:type="int" name="discount_request_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Discount Request ID"
+        />
+        <column xsi:type="int" name="product_id"  padding="10" unsigned="true" nullable="true"
+                comment="Product ID"
+        />
+        <column xsi:type="int" name="customer_id" padding="10" unsigned="true" nullable="true"
+                comment="Customer ID"
+        />
+        <column xsi:type="varchar" name="name" nullable="false" length="255"
+                comment="Name"
+        />
+        <column xsi:type="varchar" name="email" nullable="false" length="255"
+                comment="Email"
+        />
+        <column xsi:type="varchar" name="message" nullable="false"
+                comment="Message"
+        /><!-- length="4096" -->
+        <column xsi:type="smallint" name="store_id" padding="5" unsigned="true" nullable="true"
+                comment="Store ID"
+        />
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Created At"
+        />
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Updated At"
+        />
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="discount_request_id"/>
+        </constraint>
+        <index referenceId="YA_ROSLAV_PERSONAL_DISCOUNT_REQUEST_PRODUCT_ID" indexType="btree">
+            <column name="product_id"/>
+        </index>
+        <index referenceId="YA_ROSLAV_PERSONAL_DISCOUNT_REQUEST_CUSTOMER_ID" indexType="btree">
+            <column name="customer_id"/>
+        </index>
+        <index referenceId="YA_ROSLAV_PERSONAL_DISCOUNT_REQUEST_STORE_ID" indexType="btree">
+            <column name="store_id"/>
+        </index>
+        <constraint xsi:type="foreign"
+                    referenceId="FK_79223374ECA112B83807C7640FB70758"
+                    table="ya_roslav_personal_discount_request"
+                    column="product_id"
+                    referenceTable="catalog_product_entity"
+                    referenceColumn="entity_id"
+                    onDelete="SET NULL"
+        />
+        <constraint xsi:type="foreign"
+                    referenceId="FK_06C66322B28A2D324FC166EC4CFA66EC"
+                    table="ya_roslav_personal_discount_reques"
+                    column="customer_id"
+                    referenceTable="customer_entity"
+                    referenceColumn="entity_id"
+                    onDelete="SET NULL"
+        />
+        <constraint xsi:type="foreign"
+                    referenceId="FK_4CA7863BAD1D1E7EE4B766D98CF29434"
+                    table="ya_roslav_personal_discount_reques"
+                    column="store_id"
+                    referenceTable="store"
+                    referenceColumn="store_id"
+                    onDelete="SET NULL"
+        />
+    </table>
+</schema>
