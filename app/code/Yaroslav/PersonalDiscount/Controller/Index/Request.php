@@ -13,25 +13,41 @@ class Request implements
     \Magento\Framework\App\CsrfAwareActionInterface
 {
     /**
-     * @var \Magento\Framework\Controller\Result\RedirectFactory
+     * @var \Magento\Framework\Controller\Result\RedirectFactory $redirectFactory
      */
     private \Magento\Framework\Controller\Result\RedirectFactory $redirectFactory;
 
     /**
-     * @var \Magento\Framework\Message\ManagerInterface
+     * @var \Magento\Framework\Message\ManagerInterface $messageManager
      */
     private \Magento\Framework\Message\ManagerInterface $messageManager;
 
     /**
+     * @var \Yaroslav\PersonalDiscount\Model\DiscountRequestFactory $discountRequestFactory
+     */
+    private \Yaroslav\PersonalDiscount\Model\DiscountRequestFactory $discountRequestFactory;
+
+    /**
+     * @var \Yaroslav\PersonalDiscount\Model\ResourceModel\DiscountRequest $discountRequestResource
+     */
+    private \Yaroslav\PersonalDiscount\Model\ResourceModel\DiscountRequest $discountRequestResource;
+
+    /**
      * @param \Magento\Framework\Controller\Result\RedirectFactory $redirectFactory
      * @param \Magento\Framework\Message\ManagerInterface $messageManager
+     * @param \Yaroslav\PersonalDiscount\Model\DiscountRequestFactory $discountRequestFactory
+     * @param \Yaroslav\PersonalDiscount\Model\ResourceModel\DiscountRequest $discountRequestResource
      */
     public function __construct(
         \Magento\Framework\Controller\Result\RedirectFactory $redirectFactory,
-        \Magento\Framework\Message\ManagerInterface $messageManager
+        \Magento\Framework\Message\ManagerInterface $messageManager,
+        \Yaroslav\PersonalDiscount\Model\DiscountRequestFactory $discountRequestFactory,
+        \Yaroslav\PersonalDiscount\Model\ResourceModel\DiscountRequest $discountRequestResource
     ) {
         $this->redirectFactory = $redirectFactory;
         $this->messageManager = $messageManager;
+        $this->discountRequestFactory = $discountRequestFactory;
+        $this->discountRequestResource = $discountRequestResource;
     }
 
     /**
@@ -41,6 +57,10 @@ class Request implements
      */
     public function execute(): Redirect
     {
+        //@TODO: implement saving data
+        $discountRequest = $this->discountRequestFactory->create();
+        // $this->discountRequestResource->save($discountRequest)/
+
         $this->messageManager->addSuccessMessage('Your request has been submitted');
 
         $redirect = $this->redirectFactory->create();
