@@ -5,35 +5,48 @@
  * @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer
  */
 ?>
-<h3>This is a child block</h3>
-<h4>Simple type parameters</h4>
+<h3><?= $escaper->escapeHtml(__('This is a child block')) ?></h3>
+
+<h4><?= $escaper->escapeHtml(__('Simple type parameters')) ?></h4>
 <ul>
-    <li>Boolean parameter: <?= var_export($block->getData('boolean_parameter'), true) ?></li>
-    <li>String parameter: <?= $block->getData('string_parameter') ?></li>
-    <li>Int parameter: <?= $block->getData('int_parameter') ?></li>
-    <li>Float parameter: <?= $block->getData('float_parameter') ?></li>
-    <li>Null parameter: <?= var_export($block->getData('null_parameter'), true) ?></li>
-    <li>URL parameter: <a href="<?= $block->getData('url_parameter') ?>"><?= $block->getData('url_parameter') ?></a></li>
-    <li>Service URL parameter (API, not controller!): <a href="<?= $block->getData('service_url_parameter') ?>"><?= $block->getData('service_url_parameter') ?></a></li>
-    <li>Helper call result: <?= $block->getData('helper_call_result') ?></li>
+    <li><?= $escaper->escapeHtml(
+            __('Boolean parameter: %1', var_export($block->getData('boolean_parameter'), true))
+        )
+        ?></li>
+    <li><?= $escaper->escapeHtml(__('String parameter: %1', $block->getData('string_parameter'))) ?></li>
+    <li><?= $escaper->escapeHtml(__('Int parameter: %1', (int) $block->getData('int_parameter'))) ?></li>
+    <li><?= $escaper->escapeHtml(__('Float parameter: %1', (float) $block->getData('float_parameter'))) ?></li>
+    <li><?= $escaper->escapeHtml(__('Null parameter: %1', var_export($block->getData('null_parameter'), true))) ?></li>
+    <li><?= $escaper->escapeHtml(__('URL parameter: ')) ?>
+        <a href="<?= $escaper->escapeHtmlAttr($block->getData('url_parameter')) ?>">
+            <?= $escaper->escapeHtml($block->getData('url_parameter')) ?>
+        </a>
+    </li>
+    <li>
+        <?= $escaper->escapeHtml(__('Service URL parameter (API, not controller!):')) ?>
+        <a href="<?= $escaper->escapeHtmlAttr($block->getData('service_url_parameter')) ?>">
+            <?= $escaper->escapeHtml($block->getData('service_url_parameter')) ?>
+        </a>
+    </li>
+    <li><?= $escaper->escapeHtml(__('Helper call result: %1', $block->getData('helper_call_result'))) ?></li>
 </ul>
 
-<h4>Array parameter</h4>
+<h4><?= $escaper->escapeHtml(__('Array parameter')) ?></h4>
 <ul>
-    <?php foreach ($block->getData('array_parameter') as $key => $value) : ?>
-        <li>Key &quot;<?= $key ?>&quot; has value &quot;<?= $value ?>&quot;</li>
+    <?php foreach ($block->getData('array_parameter') as $key => $value): ?>
+        <li><?= $escaper->escapeHtml(__('Key %1 has value %2', $key, $value)) ?></li>
     <?php endforeach; ?>
 </ul>
 
-<h4>Options parameter</h4>
-<label for="test-select" style="display: none;">Select to output demo data</label>
+<h4><?= $escaper->escapeHtml(__('Options parameter')) ?></h4>
+<label for="test-select" style="display: none;"><?= $escaper->escapeHtml(__('Select to output demo data')) ?></label>
 <select id="test-select" name="test_select">
-    <?php /** @var */
-    foreach ($block->getData('options_parameter') as $option) :
-        ?>
-        <option value="<?= $option['value'] ?>" label="<?= $option['label'] ?>"><?= $option['label'] ?></option>
+    <?php foreach ($block->getData('options_parameter') as $option): ?>
+        <option value="<?= $escaper->escapeHtmlAttr($option['value']) ?>"
+                label="<?= $escaper->escapeHtmlAttr($option['label']) ?>"
+        ><?= $escaper->escapeHtml($option['label']) ?></option>
     <?php endforeach; ?>
 </select>
 
-<h4>ViewModel parameter</h4>
-<p>ViewModel is instance of: \<?= get_class($block->getData('view_model')) ?></p>
+<h4><?= $escaper->escapeHtml(__('ViewModel parameter')) ?></h4>
+<p><?= $escaper->escapeHtml(__('ViewModel is instance of: \%1', get_class($block->getData('view_model')))) ?></p>

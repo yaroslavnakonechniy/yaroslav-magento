@@ -14,13 +14,13 @@ class Options implements \Magento\Framework\Data\OptionSourceInterface
     {
         return [
             [
-                'label' => 'Option 1',
+                'label' => __('Option 1'),
                 'value' => 'option_1'
             ], [
-                'label' => 'Option 2',
+                'label' => __('Option 2'),
                 'value' => 'option_2'
             ], [
-                'label' => 'Option 3',
+                'label' => __('Option 3'),
                 'value' => 'option_3'
             ]
         ];
