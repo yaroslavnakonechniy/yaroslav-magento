@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="review_product_form_component"/>
+    <body>
+
+        <referenceContainer name="content.massege">
+            <container name="yaroslav.c.m.s.container" htmlTag="div" htmlClass="yaroslav-cms">
+                <block class="Magento\Framework\View\Element\Template"
+                       name="yaroslav.c.m.s.text.block.with.template"
+                       template="Yaroslav_Cms::massege.phtml"
+                >
+                    <arguments>
+                        <argument name="string_parameter" translate="true" xsi:type="string">This is a demo product. You can add them to cart and place order only to test the Magento</argument>
+                    </arguments>
+                </block>
+            </container>
+        </referenceContainer>
+
+    </body>
+</page>

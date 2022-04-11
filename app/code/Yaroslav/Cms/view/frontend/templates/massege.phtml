@@ -1,0 +1,15 @@
+<?php
+/**
+ * @var \Magento\Framework\View\Element\Template $block
+ * @var \Magento\Framework\Escaper $escaper
+ * @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer
+ */
+?>
+<div data-bind="attr: {
+            class: 'message-' + message.type + ' ' + message.type + ' message',
+            'data-ui-id': 'message-' + message.type
+        }" class="message-error error message" data-ui-id="message-success">
+    <div data-bind="html: $parent.prepareMessageForHtml(message.text)">
+        <?= $escaper->escapeHtml(__('String parameter: %1', $block->getData('string_parameter'))) ?>
+    </div>
+</div>
