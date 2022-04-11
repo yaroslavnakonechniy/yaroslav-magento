@@ -363,6 +363,7 @@ return [
         'Vertex_RequestLoggingApi' => 1,
         'Vertex_RequestLogging' => 1,
         'Vertex_AddressValidation' => 1,
+        'Yaroslav_Cms' => 1,
         'Yaroslav_ControllerDemos' => 1,
         'Yaroslav_LayoutDebug' => 1,
         'Yotpo_Yotpo' => 1
