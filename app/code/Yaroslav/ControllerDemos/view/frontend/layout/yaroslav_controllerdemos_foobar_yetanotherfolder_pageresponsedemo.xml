@@ -10,6 +10,7 @@
                        class="Magento\Framework\View\Element\Text"
                        before="-"
                 >
+
                     <arguments>
                         <argument name="text" translate="true" xsi:type="string"><![CDATA[{DV.Campus} Text block demo]]></argument>
                     </arguments>
@@ -17,7 +18,13 @@
                 <block class="Magento\Framework\View\Element\Template"
                        name="yaroslav.controller.demos.text.block.with.template"
                        template="Yaroslav_ControllerDemos::demo.phtml"
-                />
+                >
+                <arguments>
+                    <argument name="url_parameter_redirectresponsedemo" xsi:type="url" path="ya-roslav-controller-demos/foobar_yetanotherfolder/redirectresponsedemo"/>
+                    <argument name="url_parameter_pagejsonresponsedemo" xsi:type="url" path="ya-roslav-controller-demos/foobar_yetanotherfolder/pagejsonresponsedemo"/>
+                    <argument name="url_parameter_forwardresponsedemo" xsi:type="url" path="ya-roslav-controller-demos/foobar_yetanotherfolder/forwardresponsedemo"/>
+                </arguments>
+            </block>
             </container>
         </referenceContainer>
     </body>

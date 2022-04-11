@@ -21,7 +21,7 @@ class ForwardResponseDemo implements
         $this->forwardFactory = $forwardFactory;
     }
     /**
-     * Controller demo
+     * Controller demo https://yaroslav-n-magento.local/ya-roslav-controller-demos/foobar_yetanotherfolder/forwardresponsedemo
      *
      * @return Forward
      */

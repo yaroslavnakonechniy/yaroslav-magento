@@ -19,7 +19,7 @@ class PageJsonResponseDemo implements \Magento\Framework\App\Action\HttpGetActio
     }
 
     /**
-     * Lyaout result demo: https://yaroslav-n-magento.local/ya-roslav-controllerdemos/foobar-yetanotherfolder/pagejsonresponsedemo
+     * Lyaout result demo: https://yaroslav-n-magento.local/ya-roslav-controller-demos/foobar_yetanotherfolder/pagejsonresponsedemo
      *
      *
      * @return Page
