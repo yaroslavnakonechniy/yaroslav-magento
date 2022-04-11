@@ -366,6 +366,7 @@ return [
         'Yaroslav_Cms' => 1,
         'Yaroslav_ControllerDemos' => 1,
         'Yaroslav_LayoutDebug' => 1,
+        'Yaroslav_PersonalDiscount' => 1,
         'Yotpo_Yotpo' => 1
     ]
 ];
