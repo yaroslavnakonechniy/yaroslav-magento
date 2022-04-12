@@ -45,7 +45,7 @@ class RecurringData implements InstallDataInterface
                 'title' => 'About Us',
                 'url_key' => 'about-us',
                 'content_heading' => 'About Us',
-                'stores' => [1],
+                'stores' => [2],
                 'page_layout' => '1column',
                 'sort_order' => 0
             ], [
@@ -54,7 +54,7 @@ class RecurringData implements InstallDataInterface
                 'title' => 'Про нас',
                 'url_key' => 'about-us',
                 'content_heading' => 'Про нас',
-                'stores' => [2],
+                'stores' => [1],
                 'page_layout' => '1column',
                 'sort_order' => 0
             ]

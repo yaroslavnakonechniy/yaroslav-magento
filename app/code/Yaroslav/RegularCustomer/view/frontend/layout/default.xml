@@ -20,6 +20,14 @@
                     <argument name="path" xsi:type="string">ya-roslav-regular-customer/request/form</argument>
                 </arguments>
             </block>
+            <referenceBlock name="top.links">
+                <block class="Magento\Framework\View\Element\Html\Link" name="custom-top-link">
+                    <arguments>
+                        <argument name="label" xsi:type="string" translate="true">Links on Personal Discount</argument>
+                        <argument name="path" xsi:type="string">ya-roslav-regular-customer/request/view</argument>
+                    </arguments>
+                </block>
+            </referenceBlock>
         </referenceBlock>
     </body>
 </page>

@@ -90,7 +90,7 @@ class RequestList implements \Magento\Framework\View\Element\Block\ArgumentInter
         }
 
         $discountRequestCollection = $this->getDiscountRequestCollection();
-        $productIds = array_filter($discountRequestCollection->getColumnValues('product_id'));
+        $productIds = array_unique(array_filter($discountRequestCollection->getColumnValues('product_id')));
 
         $productCollection = $this->productCollectionFactory->create();
         $productCollection->addAttributeToFilter('entity_id', $productIds)
