@@ -1,0 +1,28 @@
+{
+    "ya_roslav_regular_customer_request": {
+        "column": {
+            "request_id": true,
+            "product_id": true,
+            "customer_id": true,
+            "name": true,
+            "email": true,
+            "admin_user_id": true,
+            "store_id": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "index": {
+            "YA_ROSLAV_REGULAR_CUSTOMER_REQUEST_PRODUCT_ID": true,
+            "YA_ROSLAV_REGULAR_CUSTOMER_REQUEST_CUSTOMER_ID": true,
+            "YA_ROSLAV_REGULAR_CUSTOMER_REQUEST_ADMIN_USER_ID": true,
+            "YA_ROSLAV_REGULAR_CUSTOMER_REQUEST_STORE_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "YA_ROSLAV_REGULAR_CSTR_REQUEST_PRD_ID_M2_CAT_PRD_ENTT_ENTT_ID": true,
+            "YA_ROSLAV_REGULAR_CSTR_REQUEST_CSTR_ID_M2_CSTR_ENTT_ENTT_ID": true,
+            "YA_ROSLAV_REGULAR_CSTR_REQUEST_ADM_USR_ID_M2_ADM_USR_USR_ID": true,
+            "YA_ROSLAV_REGULAR_CUSTOMER_REQUEST_STORE_ID_M2_STORE_STORE_ID": true
+        }
+    }
+}
