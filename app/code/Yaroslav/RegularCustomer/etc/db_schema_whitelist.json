@@ -9,7 +9,8 @@
             "admin_user_id": true,
             "store_id": true,
             "created_at": true,
-            "updated_at": true
+            "updated_at": true,
+            "demo_column_to_be_deleted": true
         },
         "index": {
             "YA_ROSLAV_REGULAR_CUSTOMER_REQUEST_PRODUCT_ID": true,
@@ -22,7 +23,8 @@
             "YA_ROSLAV_REGULAR_CSTR_REQUEST_PRD_ID_M2_CAT_PRD_ENTT_ENTT_ID": true,
             "YA_ROSLAV_REGULAR_CSTR_REQUEST_CSTR_ID_M2_CSTR_ENTT_ENTT_ID": true,
             "YA_ROSLAV_REGULAR_CSTR_REQUEST_ADM_USR_ID_M2_ADM_USR_USR_ID": true,
-            "YA_ROSLAV_REGULAR_CUSTOMER_REQUEST_STORE_ID_M2_STORE_STORE_ID": true
+            "YA_ROSLAV_REGULAR_CUSTOMER_REQUEST_STORE_ID_M2_STORE_STORE_ID": true,
+            "YA_ROSLAV_REGULAR_CUSTOMER_REQUEST_EMAIL_STORE_ID": true
         }
     }
 }
