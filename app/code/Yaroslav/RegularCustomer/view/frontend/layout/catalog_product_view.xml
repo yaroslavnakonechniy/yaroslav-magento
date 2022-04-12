@@ -24,7 +24,7 @@
                 <arguments>
                     <argument name="cache_lifetime" xsi:type="number">84600</argument>
                     <argument name="request_submit_url"
-                              path="yaroslav_personal_discount/index/request"
+                              path="ya-roslav-personal-discount/index/request"
                               xsi:type="url"
                     />
                     <argument name="product"

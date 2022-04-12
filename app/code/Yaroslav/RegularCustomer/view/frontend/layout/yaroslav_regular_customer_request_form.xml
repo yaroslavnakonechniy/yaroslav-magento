@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd"
+>
+    <body>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="ya.roslav.personal.discount.form"
+                   template="Yaroslav_RegularCustomer::catalog/product/view/form/regular_customer_request_form.phtml"
+            >
+                <arguments>
+                    <argument name="request_submit_url"
+                              path="ya-roslav-personal-discount/index/request"
+                              xsi:type="url"
+                    />
+                    <argument name="product"
+                              helper="Magento\Catalog\Helper\Data::getProduct"
+                              xsi:type="helper"
+                    />
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>
