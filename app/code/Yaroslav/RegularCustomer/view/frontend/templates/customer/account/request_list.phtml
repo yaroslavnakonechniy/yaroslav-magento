@@ -1,0 +1,20 @@
+<?php
+/**
+ * @var \Magento\Framework\View\Element\Template $block
+ * @var \Magento\Framework\Escaper $escaper
+ * @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer
+ */
+/** @var \Yaroslav\RegularCustomer\ViewModel\Customer\RequestList $viewModel */
+$viewModel = $block->getData('view_model');
+?>
+<ul>
+    <?php /** @var \Yaroslav\RegularCustomer\Model\DiscountRequest $discountRequest */ ?>
+    <?php foreach ($viewModel->getDiscountRequestCollection() as $discountRequest): ?>
+        <?php $product = $viewModel->getProduct((int) $discountRequest->getProductId()); ?>
+        <li>
+            <span><?= $escaper->escapeHtml(__('Requested product: %1', $product ? $product->getName() : '-')) ?></span>
+            <br/>
+            <span><?= $escaper->escapeHtml(__('Message: %1', $discountRequest->getMessage())) ?></span>
+        </li>
+    <?php endforeach; ?>
+</ul>

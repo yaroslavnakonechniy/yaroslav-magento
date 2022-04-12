@@ -3,6 +3,8 @@ Name,Ім'я
 "Email","Електронна пошта"
 Message,Повідомлення
 "Send Request","Відправити запит"
+"Requested product: %1","Продукт: %1"
+"Message: %1","Моє повідомлення: %1"
 "Personal Discount","Персональна знижка"
 "Loyalty program for Regular Customers","Программа лояльности для постоянных клиентов"
 "Customers who buy products multiple times get a discount when buying multiple items. Only registered customers will get discounts!","Клиенты, которые покупают товары несколько раз, получают скидку при покупке нескольких товаров. Скидки получат только зарегистрированные клиенты!"
