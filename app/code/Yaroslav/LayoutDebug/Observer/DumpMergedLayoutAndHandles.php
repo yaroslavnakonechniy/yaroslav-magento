@@ -20,10 +20,13 @@ class DumpMergedLayoutAndHandles implements \Magento\Framework\Event\ObserverInt
      */
     public function __construct(
         \Magento\Framework\UrlInterface $url,
-        \Magento\Framework\App\Filesystem\DirectoryList $dir
+        \Magento\Framework\App\Filesystem\DirectoryList $dir,
+        \Magento\Framework\Filesystem\Driver\File $fileDriver
+
     ) {
         $this->url = $url;
         $this->dir = $dir;
+        $this->fileDriver = $fileDriver;
     }
 
     /**
@@ -44,7 +47,7 @@ class DumpMergedLayoutAndHandles implements \Magento\Framework\Event\ObserverInt
         }
 
         // ONLY FOR DEBUG! Use \Magento\Framework\Filesystem\Directory\Write::writeFile() instead!
-        file_put_contents(
+        $this->fileDriver->filePutContents(
             $logsDir . 'layout_handles.log',
             implode("\n", $layoutHandles) . "\n\n",
             FILE_APPEND
@@ -52,7 +55,7 @@ class DumpMergedLayoutAndHandles implements \Magento\Framework\Event\ObserverInt
 
         // Get merged page layout
         // ONLY FOR DEBUG! Use \Magento\Framework\Filesystem\Directory\Write::writeFile() instead!
-        file_put_contents(
+        $this->fileDriver->filePutContents(
             $logsDir . 'layout_merged.xml',
             $layout->getXmlString() . "\n\n"
         );

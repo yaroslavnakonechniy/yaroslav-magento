@@ -41,6 +41,7 @@ class RequestList implements \Magento\Framework\View\Element\Block\ArgumentInter
      * @param DiscountRequestCollectionFactory $discountRequestCollectionFactory
      * @param \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory
      * @param \Magento\Store\Model\StoreManagerInterface $storeManager
+     * @param \Magento\Catalog\Model\Product\Visibility $productVisibility
      */
     public function __construct(
         DiscountRequestCollectionFactory $discountRequestCollectionFactory,

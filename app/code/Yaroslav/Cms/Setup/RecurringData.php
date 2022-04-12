@@ -146,7 +146,9 @@ class RecurringData implements InstallDataInterface
     public function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context): void
     {
         // Do not run the patch during data migration phase
+        // phpcs:disable
         if (getenv('MIGRATION_MODE')) {
+            // phpcs:enable
             return;
         }
 
