@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd"
+>
+    <body>
+        <move element="ya.roslav.personal.discount.form" destination="ya-roslav-personal-discount-tab"/>
+        <referenceBlock name="product.info.details">
+            <block class="Magento\Framework\View\Element\Text\ListText"
+                   name="ya-roslav-personal-discount-tab"
+                   group="detailed_info"
+            >
+                <block class="Magento\Cms\Block\BlockByIdentifier"
+                       name="yaroslav.text.cms.block">
+                    <arguments>
+                        <argument name="identifier" xsi:type="string">title_block</argument>
+                    </arguments>
+                </block>
+                <block class="Magento\Cms\Block\BlockByIdentifier"
+                       name="yaroslav.text.after.title.cms.block">
+                    <arguments>
+                        <argument name="identifier" xsi:type="string">block_between_the_title_and_the_form</argument>
+                    </arguments>
+                </block>
+                <arguments>
+                    <argument name="sort_order" xsi:type="string">40</argument>
+                    <argument translate="true" name="title" xsi:type="string">Personal Discount</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>
