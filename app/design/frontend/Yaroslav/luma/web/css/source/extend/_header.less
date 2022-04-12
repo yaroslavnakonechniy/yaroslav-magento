@@ -1,0 +1,7 @@
+& when (@media-common = true) {
+    //  common styles without breakpoints go here
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    //  these styles are applied only when device screen width is >= 768px
+}
