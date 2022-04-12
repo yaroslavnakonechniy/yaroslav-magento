@@ -3,10 +3,10 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd"
 >
     <body>
-        <move element="ya.roslav.personal.discount.form" destination="ya-roslav-personal-discount-tab"/>
+        <move element="ya.roslav.regular.customer.form" destination="ya-roslav-regular-customer-tab"/>
         <referenceBlock name="product.info.details">
             <block class="Magento\Framework\View\Element\Text\ListText"
-                   name="ya-roslav-personal-discount-tab"
+                   name="ya-roslav-regular-customer-tab"
                    group="detailed_info"
             >
                 <block class="Magento\Cms\Block\BlockByIdentifier"

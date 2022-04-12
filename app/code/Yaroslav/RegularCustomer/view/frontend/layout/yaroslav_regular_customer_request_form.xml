@@ -5,12 +5,12 @@
     <body>
         <referenceContainer name="content">
             <block class="Magento\Framework\View\Element\Template"
-                   name="ya.roslav.personal.discount.form"
+                   name="ya.roslav.regular.customer.form"
                    template="Yaroslav_RegularCustomer::catalog/product/view/form/regular_customer_request_form.phtml"
             >
                 <arguments>
                     <argument name="request_submit_url"
-                              path="ya-roslav-personal-discount/index/request"
+                              path="ya-roslav-regular-customer/index/request"
                               xsi:type="url"
                     />
                     <argument name="product"
