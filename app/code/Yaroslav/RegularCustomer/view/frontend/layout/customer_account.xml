@@ -9,7 +9,7 @@
             >
                 <arguments>
                     <argument name="path" xsi:type="string">ya-roslav-regular-customer/request/view</argument>
-                    <argument name="label" xsi:type="string" translate="true">Regular Customer</argument>
+                    <argument name="label" xsi:type="string" translate="true">Personal Discount</argument>
                     <argument name="sortOrder" xsi:type="number">100</argument>
                 </arguments>
             </block>

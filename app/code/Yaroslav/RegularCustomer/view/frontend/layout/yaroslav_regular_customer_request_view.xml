@@ -4,7 +4,7 @@
 >
     <update handle="customer_account"/>
     <head>
-        <title>Regular Customer</title>
+        <title>Personal Discount</title>
     </head>
     <body>
         <referenceContainer name="content">
