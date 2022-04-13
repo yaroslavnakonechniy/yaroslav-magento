@@ -12,6 +12,9 @@ $product = $block->getData('product');
           id="ya-roslav-regular-customer-form"
           action="<?= $escaper->escapeHtmlAttr($block->getData('request_submit_url')) ?>"
           method="post"
+          data-mage-init='{
+              "Yaroslav_RegularCustomer_form": "<?= $escaper->escapeJs(__('Discount Request')) ?>"
+          }'
     >
         <fieldset class="fieldset">
             <br/>
