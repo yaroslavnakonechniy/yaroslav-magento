@@ -3,11 +3,11 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd"
 >
     <body>
-        <referenceContainer name="product.info.main">
+        <referenceContainer name="content">
             <block class="Yaroslav\RegularCustomer\Block\Product\View\DiscountRequest"
                    name="ya.roslav.regular.customer.form"
                    template="Yaroslav_RegularCustomer::catalog/product/view/discount/personal_discount_request.phtml"
-                   after="-"
+                   before="product.info.details"
             >
                 <block class="Magento\Cms\Block\BlockByIdentifier"
                        name="yaroslav.text.cms.block">
