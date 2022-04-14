@@ -5,8 +5,11 @@ Message,Message
 "Send Request","Send Request"
 "Requested product: %1","Requested product: %1"
 "Message: %1","Message: %1"
+"Request Personal Discount","Request Personal Discount"
 "Personal Discount","Personal Discount"
 "Loyalty program for Regular Customers","Loyalty program for Regular Customers"
+"Posting your request...","Posting your request..."
+Error,Error
 "Customers who buy products multiple times get a discount when buying multiple items. Only registered customers will get discounts!","Customers who buy products multiple times get a discount when buying multiple items. Only registered customers will get discounts!"
 "Links on Request","Links on Request"
 "You request for product %1 accepted for review!","You request for product %1 accepted for review!"

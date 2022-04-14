@@ -32,7 +32,7 @@ class RecurringData implements InstallDataInterface
     private const ENTITY_TYPE_PAGE = 'page';
     private const ENTITY_TYPE_BLOCK = 'block';
 
-    private const MODULE_NAME = 'YaroslavN_Cms';
+    private const MODULE_NAME = 'Yaroslav_Cms';
 
     /**
      * @var array $content
