@@ -120,7 +120,7 @@ class Request implements
                 ->setStoreId($this->storeManager->getStore()->getId());
 
             $this->discountRequestResource->save($discountRequest);
-            
+
             if (!$this->customerSession->isLoggedIn()) {
                 $this->customerSession->setDiscountRequestCustomerName($this->request->getParam('name'));
                 $this->customerSession->setDiscountRequestCustomerEmail($this->request->getParam('email'));
