@@ -3,36 +3,43 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd"
 >
     <body>
-        <referenceContainer name="content">
-            <block class="Yaroslav\RegularCustomer\Block\Product\View\DiscountRequest"
-                   name="ya.roslav.regular.customer.form"
-                   template="Yaroslav_RegularCustomer::catalog/product/view/discount/personal_discount_request.phtml"
-                   before="product.info.details"
-            >
-                <block class="Magento\Cms\Block\BlockByIdentifier"
-                       name="yaroslav.text.cms.block">
+        <referenceContainer name="product.info.main">
+            <container name="ya.roslav.regular.customer.form.container">
+                <block class="Yaroslav\RegularCustomer\Block\Product\View\DiscountRequest"
+                       name="ya.roslav.regular.customer.form"
+                       template="Yaroslav_RegularCustomer::catalog/product/view/personal_discount_request/form.phtml"
+                       after="-"
+                >
                     <arguments>
-                        <argument name="identifier" xsi:type="string">title_block</argument>
+                        <argument name="cache_lifetime" xsi:type="number">84600</argument>
+                        <argument name="request_submit_url"
+                                  path="yaroslav_regular_customer/index/request"
+                                  xsi:type="url"
+                        />
+                        <argument name="product"
+                                  helper="Magento\Catalog\Helper\Data::getProduct"
+                                  xsi:type="helper"
+                        />
                     </arguments>
                 </block>
-                <block class="Magento\Cms\Block\BlockByIdentifier"
-                       name="yaroslav.text.after.title.cms.block">
-                    <arguments>
-                        <argument name="identifier" xsi:type="string">block_between_the_title_and_the_form</argument>
-                    </arguments>
-                </block>
-                <arguments>
-                    <argument name="cache_lifetime" xsi:type="number">84600</argument>
-                    <argument name="request_submit_url"
-                              path="ya-roslav-regular-customer/index/request"
-                              xsi:type="url"
-                    />
-                    <argument name="product"
-                              helper="Magento\Catalog\Helper\Data::getProduct"
-                              xsi:type="helper"
-                    />
-                </arguments>
-            </block>
+                <block class="Magento\Framework\View\Element\Template"
+                       name="ya.roslav.regular.customer.open.button"
+                       template="Yaroslav_RegularCustomer::catalog/product/view/personal_discount_request/form_open_button.phtml"
+                />
+<!--                <block class="Magento\Cms\Block\BlockByIdentifier"-->
+<!--                       name="yaroslav.text.cms.block">-->
+<!--                    <arguments>-->
+<!--                        <argument name="identifier" xsi:type="string">title_block</argument>-->
+<!--                    </arguments>-->
+<!--                </block>-->
+<!--                <block class="Magento\Cms\Block\BlockByIdentifier"-->
+<!--                       name="yaroslav.text.after.title.cms.block">-->
+<!--                    <arguments>-->
+<!--                        <argument name="identifier" xsi:type="string">block_between_the_title_and_the_form</argument>-->
+<!--                    </arguments>-->
+<!--                </block>-->
+
+            </container>
         </referenceContainer>
     </body>
 </page>

@@ -1,0 +1,11 @@
+<?php
+/**
+ * @var \Magento\Framework\View\Element\Template $block
+ * @var \Magento\Framework\Escaper $escaper
+ * @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer
+ */
+?>
+<?php /** @TODO: only logged in customers must be able to make a request. Show login form on button click */ ?>
+<button class="action primary" data-mage-init='{"Yaroslav_RegularCustomer_formOpenButton": {}}'>
+    <span><?= $escaper->escapeHtml(__('Request Personal Discount')) ?></span>
+</button>

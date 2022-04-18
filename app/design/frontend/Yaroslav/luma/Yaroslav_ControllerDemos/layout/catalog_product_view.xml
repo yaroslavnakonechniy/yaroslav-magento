@@ -12,7 +12,7 @@
     <update handle="catalog_product_opengraph" />
     <update handle="page_calendar"/>
     <body>
-        <move element="product.info.extrahint" destination="page.main.title" before="-" />
+<!--        <move element="product.info.extrahint" destination="page.main.title" before="-" />-->
         <attribute name="itemtype" value="http://schema.org/Product" />
         <attribute name="itemscope" value="itemscope"/>
         <referenceBlock name="head.components">
