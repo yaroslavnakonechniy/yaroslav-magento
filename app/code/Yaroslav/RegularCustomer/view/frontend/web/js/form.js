@@ -33,10 +33,15 @@ define([
                 $(document).on('ya_roslav_regular_customer_form_open', this.openModal.bind(this));
             }
 
-            console.log(customerData.get('regular-customer')());
-            customerData.get('regular-customer').subscribe(function (value) {
-                console.log(value);
-            });
+            this.updateFormState(customerData.get('personal-discount')());
+            customerData.get('personal-discount').subscribe(this.updateFormState.bind(this));
+        },
+
+        /**
+         * Pre-fill form fields with data, hide fields if needed.
+         */
+        updateFormState: function (personalInfo) {
+            console.log(personalInfo);
         },
 
         /**

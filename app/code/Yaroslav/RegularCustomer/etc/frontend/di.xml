@@ -10,7 +10,7 @@
             <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>
         </arguments>
     </type>
-    <type name="Yaroslav\RegularCustomer\ViewModel\Customer\RequestList">
+    <type name="Yaroslav\RegularCustomer\Model\CustomerRequestsProvider">
         <arguments>
             <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>
         </arguments>
@@ -20,6 +20,11 @@
             <argument name="sectionSourceMap" xsi:type="array">
                 <item name="personal-discount" xsi:type="string">Yaroslav\RegularCustomer\CustomerData\DiscountRequests</item>
             </argument>
+        </arguments>
+    </type>
+    <type name="Yaroslav\RegularCustomer\CustomerData\DiscountRequests">
+        <arguments>
+            <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>
         </arguments>
     </type>
 </config>
