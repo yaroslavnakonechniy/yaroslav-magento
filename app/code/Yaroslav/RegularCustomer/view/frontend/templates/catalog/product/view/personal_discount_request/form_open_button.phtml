@@ -6,6 +6,20 @@
  */
 ?>
 <?php /** @TODO: only logged in customers must be able to make a request. Show login form on button click */ ?>
-<button class="action primary" data-mage-init='{"Yaroslav_RegularCustomer_formOpenButton": {}}'>
-    <span><?= $escaper->escapeHtml(__('Request Personal Discount')) ?></span>
-</button>
+<div data-bind="scope: 'regularCustomerRequestButton'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "regularCustomerRequestButton": {
+                        "component": "Yaroslav_RegularCustomer_formOpenButton"
+                    }
+                }
+            }
+        }
+    }
+</script>

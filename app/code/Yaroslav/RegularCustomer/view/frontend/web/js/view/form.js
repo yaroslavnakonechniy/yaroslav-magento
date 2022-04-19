@@ -4,23 +4,29 @@ define([
     'uiComponent',
     'Magento_Customer/js/customer-data',
     'Yaroslav_RegularCustomer_submitFormAction',
+    'Yaroslav_RegularCustomer_formSubmitRestrictions',
     'Magento_Ui/js/modal/modal',
     'mage/translate',
     'mage/cookies'
-], function ($, ko, Component, customerData, submitFormAction) {
+], function ($, ko, Component, customerData, submitFormAction, formSubmitRestrictions) {
     'use strict';
     return Component.extend({
         defaults: {
             action: '',
-            customerName: '',
-            customerEmail: '',
-            customerMessage: '',
-            isLoggedIn: !!customerData.get('personal-discount')().isLoggedIn,
             isModal: true,
             productId: 0,
-            productIds: [],
-            template: 'Yaroslav_RegularCustomer/form'
+            template: 'Yaroslav_RegularCustomer/form',
+            listens: {
+                formSubmitDeniedMessage: 'updateFormSubmitRestrictions'
+            }
         },
+
+        customerName: '',
+        customerEmail: '',
+        customerMessage: '',
+        isLoggedIn: !!customerData.get('personal-discount')().isLoggedIn,
+        productIds: [],
+
         /**
          * Constructor
          */
@@ -53,6 +59,13 @@ define([
             );
 
             return this;
+        },
+
+        /**
+         * Update storage to indicate that new restrictions are in action
+         */
+        updateFormSubmitRestrictions: function () {
+            formSubmitRestrictions.formSubmitDeniedMessage(this.formSubmitDeniedMessage());
         },
 
         /**

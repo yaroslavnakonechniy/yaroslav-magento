@@ -26,19 +26,6 @@
                        name="ya.roslav.regular.customer.open.button"
                        template="Yaroslav_RegularCustomer::catalog/product/view/personal_discount_request/form_open_button.phtml"
                 />
-<!--                <block class="Magento\Cms\Block\BlockByIdentifier"-->
-<!--                       name="yaroslav.text.cms.block">-->
-<!--                    <arguments>-->
-<!--                        <argument name="identifier" xsi:type="string">title_block</argument>-->
-<!--                    </arguments>-->
-<!--                </block>-->
-<!--                <block class="Magento\Cms\Block\BlockByIdentifier"-->
-<!--                       name="yaroslav.text.after.title.cms.block">-->
-<!--                    <arguments>-->
-<!--                        <argument name="identifier" xsi:type="string">block_between_the_title_and_the_form</argument>-->
-<!--                    </arguments>-->
-<!--                </block>-->
-
             </container>
         </referenceContainer>
     </body>
