@@ -1,10 +1,11 @@
 define([
     'jquery',
+    'Magento_Customer/js/customer-data',
     'Magento_Ui/js/modal/alert',
     'Magento_Ui/js/modal/modal',
     'mage/translate',
     'mage/cookies'
-], function ($, alert) {
+], function ($, customerData, alert) {
     'use strict';
 
     $.widget('Yaroslav.regularCustomer_form', {
@@ -31,6 +32,11 @@ define([
 
                 $(document).on('ya_roslav_regular_customer_form_open', this.openModal.bind(this));
             }
+
+            console.log(customerData.get('regular-customer')());
+            customerData.get('regular-customer').subscribe(function (value) {
+                console.log(value);
+            });
         },
 
         /**
