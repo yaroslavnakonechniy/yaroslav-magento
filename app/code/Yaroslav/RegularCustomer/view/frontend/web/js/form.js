@@ -41,6 +41,17 @@ define([
             // Watch name, email and message: customer may change them, or they come from the server
             // Watch isLoggedIn and productIds because they come from the server
             this.observe(['customerName', 'customerEmail', 'customerMessage', 'isLoggedIn', 'productIds']);
+
+            this.formSubmitDeniedMessage = ko.computed(
+                function () {
+                    if (this.productIds().indexOf(this.productId) !== -1) {
+                        return $.mage.__('Discount request for this product has already been sent');
+                    }
+
+                    return '';
+                }.bind(this)
+            );
+
             return this;
         },
 

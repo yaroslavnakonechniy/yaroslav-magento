@@ -3,8 +3,9 @@
       onsubmit="return false;"
       method="post"
       data-bind="
+          afterRender: initModal,
           submit: sendRequest,
-          afterRender: initModal
+          visible: !formSubmitDeniedMessage()
       "
 >
     <fieldset class="fieldset">
@@ -70,4 +71,7 @@
         </div>
     </div>
 </form>
+<div class="message-info info message" data-bind="visible: formSubmitDeniedMessage()">
+    <div data-bind="text: formSubmitDeniedMessage()"></div>
+</div>
 
