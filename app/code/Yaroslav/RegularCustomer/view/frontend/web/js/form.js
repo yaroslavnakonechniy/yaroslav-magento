@@ -11,70 +11,76 @@ define([
     'use strict';
     return Component.extend({
         defaults: {
+            action: '',
             customerName: '',
             customerEmail: '',
             customerMessage: '',
+            isLoggedIn: !!customerData.get('personal-discount')().isLoggedIn,
+            isModal: true,
+            productId: 0,
+            productIds: [],
             template: 'Yaroslav_RegularCustomer/form'
         },
-
-        initObservable: function () {
-            this._super();
-            this.observe(['customerName', 'customerEmail', 'customerMessage']);
-
-            this.customerName.subscribe(function (newValue) {
-                console.log(newValue);
-            });
-
-            return this;
-        },
-
-        sendRequest: function () {
-            console.log('Going to submit the form');
-        }
-    });
-
-    // The below code does not work due to the `return` statement above
-    $.widget('Yaroslav.regularCustomer_form', {
-        options: {
-            action: '',
-            isModal: true
-        },
-
         /**
-         * @private
+         * Constructor
          */
-        _create: function () {
-            $(this.element).modal({
-                buttons: []
-            });
-
-            $(this.element).on('submit.ya_roslav_regular_customer_form', this.sendRequest.bind(this));
-
-
-            if (this.options.isModal) {
-                $(this.element).modal({
-                    buttons: []
-                });
-
-                $(document).on('ya_roslav_regular_customer_form_open', this.openModal.bind(this));
-            }
+        initialize: function () {
+            this._super()
 
             this.updateFormState(customerData.get('personal-discount')());
             customerData.get('personal-discount').subscribe(this.updateFormState.bind(this));
         },
 
         /**
+         * Initialize observables and subscribe to their change if needed
+         * @returns {*}
+         */
+
+        initObservable: function () {
+            this._super();
+            // Watch name, email and message: customer may change them, or they come from the server
+            // Watch isLoggedIn and productIds because they come from the server
+            this.observe(['customerName', 'customerEmail', 'customerMessage', 'isLoggedIn', 'productIds']);
+            return this;
+        },
+
+        /**
          * Pre-fill form fields with data, hide fields if needed.
+         * @param {Object} personalInfo
          */
         updateFormState: function (personalInfo) {
-            console.log(personalInfo);
+            if (personalInfo.hasOwnProperty('name')) {
+                this.customerName(personalInfo.name);
+            }
+
+            if (personalInfo.hasOwnProperty('email')) {
+                this.customerEmail(personalInfo.email);
+            }
+
+            this.isLoggedIn(personalInfo.isLoggedIn);
+        },
+
+        /**
+         * Save current for element and initialize modal window
+         * @param {Node} element
+         */
+        initModal: function (element) {
+            this.$form = $(element);
+
+            if (this.isModal) {
+                this.$modal = this.$form.modal({
+                    buttons: []
+                });
+
+                $(document).on('ya_roslav_regular_customer_form_open', this.openModal.bind(this));
+            }
         },
 
         /**
          * Open modal dialog
          */
         openModal: function () {
-            $(this.element).modal('openModal');
+            this.$modal.modal('openModal');
         },
 
         /**
@@ -92,24 +98,25 @@ define([
          * Validate request form
          */
         validateForm: function () {
-            return $(this.element).validation().valid();
+            return this.$form.validation().valid();
         },
 
         /**
          * Submit request via AJAX. Add form key to the post data.
          */
         ajaxSubmit: function () {
-            let formData = new FormData($(this.element).get(0));
-
-            // Form key is not appended when the form is in the tab. Must add it manually
-            formData.append('form_key', $.mage.cookies.get('form_key'));
-            formData.append('isAjax', 1);
+            let payload = {
+                name: this.customerName(),
+                email: this.customerEmail(),
+                message: this.customerMessage(),
+                'product_id': this.productId,
+                'form_key': $.mage.cookies.get('form_key'),
+                isAjax: 1,
+            };
 
             $.ajax({
-                url: this.options.action,
-                data: formData,
-                processData: false,
-                contentType: false,
+                url: this.action,
+                data: payload,
                 type: 'post',
                 dataType: 'json',
                 context: this,
@@ -122,7 +129,7 @@ define([
                 /**
                  * Success means that response from the server was received, but not that the request was saved!
                  *
-                 * @inheritdoc
+                 * @param {Object} response
                  */
                 success: function (response) {
                     $(this.element).modal('closeModal');
@@ -142,8 +149,8 @@ define([
 
                 /** @inheritdoc */
                 complete: function () {
-                    if (this.options.isModal) {
-                        $(this.element).modal('closeModal');
+                    if (this.isModal) {
+                        $(this.$modal).modal('closeModal');
                     }
 
                     $('body').trigger('processStop');
@@ -152,5 +159,4 @@ define([
         }
     });
 
-    return $.Yaroslav.regularCustomer_form;
 });

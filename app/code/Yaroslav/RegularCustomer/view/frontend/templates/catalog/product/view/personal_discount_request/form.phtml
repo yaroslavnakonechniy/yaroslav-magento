@@ -23,7 +23,10 @@ if ($block->hasData('is_modal')) {
             "Magento_Ui/js/core/app": {
                 "components": {
                     "regularCustomerRequestForm": {
-                        "component": "Yaroslav_RegularCustomer_form"
+                        "component": "Yaroslav_RegularCustomer_form",
+                        "action": "<?= $escaper->escapeJs($block->getUrl('yaroslav_regular_customer/index/request')) ?>",
+                        "productId": <?= (int) $block->getProduct()->getId() ?>,
+                        "isModal": <?= $escaper->escapeJs($isModal) ?>
                     }
                 }
             }

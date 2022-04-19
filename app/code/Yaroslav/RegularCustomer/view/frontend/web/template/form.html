@@ -2,7 +2,10 @@
       action="/errors/404.php"
       onsubmit="return false;"
       method="post"
-      data-bind="submit: sendRequest"
+      data-bind="
+          submit: sendRequest,
+          afterRender: initModal
+      "
 >
     <fieldset class="fieldset">
         <br/>
