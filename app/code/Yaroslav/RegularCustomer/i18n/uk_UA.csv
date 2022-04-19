@@ -7,8 +7,10 @@ Message,Повідомлення
 "Message: %1","Моє повідомлення: %1"
 "Request Personal Discount","Отримати знижку"
 "Personal Discount","Персональна знижка"
+"Request a Discount","Request a Discount"
 "Loyalty program for Regular Customers","Программа лояльности для постоянных клиентов"
 "Posting your request...","Обробляємо запит..."
 Error,Помилка
 "Customers who buy products multiple times get a discount when buying multiple items. Only registered customers will get discounts!","Клиенты, которые покупают товары несколько раз, получают скидку при покупке нескольких товаров. Скидки получат только зарегистрированные клиенты!"
 "Links on Request","Посилання на запит"
+"Discount request for this product has already been sent","Запит на знижку для цього продукту вже було надіслано"
