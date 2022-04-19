@@ -112,8 +112,7 @@ class Request implements
                 throw new \InvalidArgumentException("Product with id $productId does not exist");
             }
 
-            $discountRequest->setProductId((int) $this->request->getParam('product_id'))
-                ->setCustomerId($customerId)
+            $discountRequest->setCustomerId($customerId)
                 ->setName($name)
                 ->setEmail($email)
                 ->setProductId($productId)
@@ -122,8 +121,8 @@ class Request implements
             $this->discountRequestResource->save($discountRequest);
 
             if (!$this->customerSession->isLoggedIn()) {
-                $this->customerSession->setDiscountRequestCustomerName($this->request->getParam('name'));
-                $this->customerSession->setDiscountRequestCustomerEmail($this->request->getParam('email'));
+                $this->customerSession->setDiscountRequestCustomerName($name);
+                $this->customerSession->setDiscountRequestCustomerEmail($email);
                 $productIds = $this->customerSession->getDiscountRequestProductIds() ?? [];
                 $productIds[] = $productId;
                 $this->customerSession->setDiscountRequestProductIds(array_unique($productIds));
