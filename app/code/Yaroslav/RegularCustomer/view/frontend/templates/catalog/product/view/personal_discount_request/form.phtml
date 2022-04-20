@@ -4,32 +4,15 @@
  * @var \Magento\Framework\Escaper $escaper
  * @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer
  */
-/** @var \Magento\Catalog\Model\Product $product */
-$product = $block->getData('product');
-// Show form in modal window by default
-if ($block->hasData('is_modal')) {
-    $isModal = $block->getData('is_modal') ? 'true' : 'false';
-} else {
-    $isModal = 'true';
-}
 ?>
-<div class="ya-roslav-regular-customer-form" data-bind="scope: 'regularCustomerRequestForm'">
+<div class="ya-roslav-regular-customer-form-wrapper" data-bind="scope: 'regularCustomerRequest'">
     <!-- ko template: getTemplate() --><!-- /ko -->
 </div>
 
 <script type="text/x-magento-init">
     {
         "*": {
-            "Magento_Ui/js/core/app": {
-                "components": {
-                    "regularCustomerRequestForm": {
-                        "component": "Yaroslav_RegularCustomer_form",
-                        "action": "<?= $escaper->escapeJs($block->getUrl('yaroslav_regular_customer/index/request')) ?>",
-                        "productId": <?= (int) $block->getProduct()->getId() ?>,
-                        "isModal": <?= $escaper->escapeJs($isModal) ?>
-                    }
-                }
-            }
+            "Magento_Ui/js/core/app": <?= /* @noEscape */ $block->getJsLayout() ?>
         }
     }
 </script>

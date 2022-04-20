@@ -12,20 +12,40 @@
                 >
                     <arguments>
                         <argument name="cache_lifetime" xsi:type="number">84600</argument>
-                        <argument name="request_submit_url"
-                                  path="yaroslav_regular_customer/index/request"
-                                  xsi:type="url"
-                        />
-                        <argument name="product"
-                                  helper="Magento\Catalog\Helper\Data::getProduct"
-                                  xsi:type="helper"
-                        />
+                        <argument name="jsLayout" xsi:type="array">
+                            <!-- Choose either `updater` or `xsi:type="helper"` -->
+                            <!-- "updater" can also be used with any argument, not just a jsLayout -->
+                            <updater>Yaroslav\RegularCustomer\Model\CurrentProductIdUpdater</updater>
+                            <item name="components" xsi:type="array">
+                                <item name="regularCustomerRequest" xsi:type="array">
+                                    <item name="component" xsi:type="string">uiCollection</item>
+                                    <item name="children" xsi:type="array">
+                                        <item name="regularCustomerRequestForm" xsi:type="array">
+                                            <item name="component" xsi:type="string">Yaroslav_RegularCustomer_form</item>
+                                            <item name="displayArea" xsi:type="string">yaRoslav-regularCustomer-form</item>
+                                            <item name="config" xsi:type="array">
+                                                <item name="action"
+                                                      xsi:type="url"
+                                                      path="yaroslav_regular_customer/index/request"
+                                                />
+                                                <!-- Choose either `updater` or `xsi:type="helper"` -->
+                                                <item name="productId" xsi:type="number">0</item>
+                                                <!-- <item name="productId" xsi:type="helper" -->
+                                                <!-- helper="Yaroslav\RegularCustomer\Helper\CurrentProduct::getCurrentProductId" -->
+                                                <!--  /> -->
+                                                <item name="isModal" xsi:type="string">true</item>
+                                            </item>
+                                        </item>
+                                        <item name="regularCustomerRequestButton" xsi:type="array">
+                                            <item name="component" xsi:type="string">Yaroslav_RegularCustomer_formOpenButton</item>
+                                            <item name="displayArea" xsi:type="string">yaRoslav-regularCustomer-formOpenButton</item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </argument>
                     </arguments>
                 </block>
-                <block class="Magento\Framework\View\Element\Template"
-                       name="ya.roslav.regular.customer.open.button"
-                       template="Yaroslav_RegularCustomer::catalog/product/view/personal_discount_request/form_open_button.phtml"
-                />
             </container>
         </referenceContainer>
     </body>
