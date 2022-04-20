@@ -33,7 +33,6 @@
                                                 <!-- <item name="productId" xsi:type="helper" -->
                                                 <!-- helper="Yaroslav\RegularCustomer\Helper\CurrentProduct::getCurrentProductId" -->
                                                 <!--  /> -->
-                                                <item name="isModal" xsi:type="string">true</item>
                                             </item>
                                         </item>
                                         <item name="regularCustomerRequestButton" xsi:type="array">

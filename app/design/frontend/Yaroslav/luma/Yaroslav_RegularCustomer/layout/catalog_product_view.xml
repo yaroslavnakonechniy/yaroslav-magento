@@ -5,10 +5,6 @@
     <body>
         <move element="ya.roslav.regular.customer.form.container" destination="ya-roslav-regular-customer-tab"/>
 
-        <!-- @TODO: find a way to notify all buttons that form is not displayed in the modal popup -->
-        <!-- Otherwise, all buttons must be removed, and it is not possible to implement a configurable form widget -->
-        <referenceBlock name="ya.roslav.regular.customer.form.open.button" remove="true"/>
-
         <referenceBlock name="product.info.details">
             <block class="Magento\Framework\View\Element\Text\ListText"
                    name="ya-roslav-regular-customer-tab"
@@ -23,7 +19,21 @@
 
         <referenceBlock name="ya.roslav.regular.customer.form">
             <arguments>
-                <argument name="is_modal" xsi:type="boolean">false</argument>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="regularCustomerRequest" xsi:type="array">
+                            <item name="children" xsi:type="array">
+                                <item name="regularCustomerRequestForm" xsi:type="array">
+                                    <item name="config" xsi:type="array">
+                                        <!-- @TODO: find a way to notify all buttons that form is not displayed in the modal popup -->
+                                        <!-- Otherwise, all buttons must be removed, and it is not possible to implement a configurable form widget -->
+                                        <item name="isModal" xsi:type="boolean">false</item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
             </arguments>
         </referenceBlock>
     </body>
