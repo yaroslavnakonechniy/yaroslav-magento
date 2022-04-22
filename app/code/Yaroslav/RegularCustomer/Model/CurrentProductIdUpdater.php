@@ -12,11 +12,20 @@ class CurrentProductIdUpdater implements \Magento\Framework\View\Layout\Argument
     private \Magento\Catalog\Helper\Data $productHelper;
 
     /**
-     * @param \Magento\Catalog\Helper\Data $productHelper
+     * @var \Yaroslav\RegularCustomer\Model\Config $config
      */
-    public function __construct(\Magento\Catalog\Helper\Data $productHelper)
-    {
+    private \Yaroslav\RegularCustomer\Model\Config $config;
+
+    /**
+     * @param \Magento\Catalog\Helper\Data $productHelper
+     * @param Config $config
+     */
+    public function __construct(
+        \Magento\Catalog\Helper\Data $productHelper,
+        \Yaroslav\RegularCustomer\Model\Config $config
+    ) {
         $this->productHelper = $productHelper;
+        $this->config = $config;
     }
 
     /**
@@ -27,8 +36,13 @@ class CurrentProductIdUpdater implements \Magento\Framework\View\Layout\Argument
      */
     public function update($value): array
     {
-        $value['components']['regularCustomerRequest']['children']['regularCustomerRequestForm']['config']
-        ['productId'] = (int) $this->productHelper->getProduct()->getId();
+        // Product is not present when Varnish ESI block are rendered via \Magento\PageCache\Controller\Block\Esi
+        if ($this->productHelper->getProduct()) {
+            $value['components']['regularCustomerRequest']['children']['regularCustomerRequestForm']['config']
+            ['productId'] = (int) $this->productHelper->getProduct()->getId();
+            $value['components']['regularCustomerRequest']['children']['regularCustomerRequestLoginButton']['config']
+            ['allowForGuests'] = (bool) $this->config->allowForGuests();
+        }
 
         return $value;
     }
