@@ -1,17 +1,20 @@
+"You request for product %1 accepted for review!","You request for product %1 accepted for review!"
+"Requested product:","Requested product:"
+"Message: %1","Message: %1"
+"Request Personal Discount","Request Personal Discount"
 "Discount Request","Discount Request"
 Name,Name
 Email,Email
 Message,Message
-"Send Request","Send Request"
-"Requested product: %1","Requested product: %1"
-"Message: %1","Message: %1"
-"Request Personal Discount","Request Personal Discount"
-"Personal Discount","Personal Discount"
 "Request a Discount","Request a Discount"
-"Loyalty program for Regular Customers","Loyalty program for Regular Customers"
 "Posting your request...","Posting your request..."
 Error,Error
-"Customers who buy products multiple times get a discount when buying multiple items. Only registered customers will get discounts!","Customers who buy products multiple times get a discount when buying multiple items. Only registered customers will get discounts!"
-"Links on Request","Links on Request"
-"You request for product %1 accepted for review!","You request for product %1 accepted for review!"
+"Your request can't be sent. Please, contact us if you see this message.","Your request can't be sent. Please, contact us if you see this message."
 "Discount request for this product has already been sent","Discount request for this product has already been sent"
+"Please, log in to send a request","Please, log in to send a request"
+"Personal Discount","Personal Discount"
+"General Settings","General Settings"
+"Settings per store view are not available","Settings per store view are not available"
+Enabled,Enabled
+"Allow for Guests","Allow for Guests"
+"Allow guests to submit discount requests. Clear Page Cache and Block HTML output cache after changing this option","Allow guests to submit discount requests. Clear Page Cache and Block HTML output cache after changing this option"

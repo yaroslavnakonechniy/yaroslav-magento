@@ -1,16 +1,21 @@
+"You request for product %1 accepted for review!","Ваш запит на продукт %1 прийнято на розгляд!"
+"Requested product:","Продукт:"
+"Message: %1","Моє повідомлення: %1"
+"Request Personal Discount","Отримати знижку"
 "Discount Request","Персональна знижка"
 Name,Ім'я
 "Email","Електронна пошта"
 Message,Повідомлення
-"Send Request","Відправити запит"
-"Requested product: %1","Продукт: %1"
-"Message: %1","Моє повідомлення: %1"
-"Request Personal Discount","Отримати знижку"
-"Personal Discount","Персональна знижка"
-"Request a Discount","Request a Discount"
-"Loyalty program for Regular Customers","Программа лояльности для постоянных клиентов"
+"Request a Discount","Надіслати запит"
 "Posting your request...","Обробляємо запит..."
 Error,Помилка
-"Customers who buy products multiple times get a discount when buying multiple items. Only registered customers will get discounts!","Клиенты, которые покупают товары несколько раз, получают скидку при покупке нескольких товаров. Скидки получат только зарегистрированные клиенты!"
-"Links on Request","Посилання на запит"
+"Your request can't be sent. Please, contact us if you see this message.","Ваш запит не може бути відправлено. Будь ласка, зв'яжіться з нами якщо ви бачите це повідомлення."
 "Discount request for this product has already been sent","Запит на знижку для цього продукту вже було надіслано"
+"Please, log in to send a request","Буль ласка, увійдіть у свій обліковий запис для відправки запиту"
+"Personal Discount","Персональна знижка"
+"General Settings","Загальні налаштування"
+"Settings per store view are not available","Немоливо налаштування на рівні окремої вітрини"
+Enabled,Активний
+"Allow for Guests","Дозволити гостям"
+"Allow guests to submit discount requests. Clear Page Cache and Block HTML output cache after changing this option",
+"Дозволити гостям надсилати запити на знижку. Очистіть Кеш Сторінок та Кеш HTML після зміни ції конфігурації"
