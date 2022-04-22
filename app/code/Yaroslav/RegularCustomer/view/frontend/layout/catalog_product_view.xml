@@ -37,7 +37,7 @@
                                                 <!--  /> -->
                                             </item>
                                         </item>
-                                        <item name="regularCustomerRequestButton" xsi:type="array">
+                                        <item name="regularCustomerRequestFormOpenButton" xsi:type="array">
                                             <item name="component" xsi:type="string">Yaroslav_RegularCustomer_formOpenButton</item>
                                             <item name="displayArea" xsi:type="string">yaRoslav-regularCustomer-formOpenButton</item>
                                             <item name="config" xsi:type="array">
@@ -45,6 +45,10 @@
                                                     <item name="isModal" xsi:type="string">regularCustomerRequest.regularCustomerRequestForm:isModal</item>
                                                 </item>
                                             </item>
+                                        </item>
+                                        <item name="regularCustomerRequestLoginButton" xsi:type="array">
+                                            <item name="component" xsi:type="string">Yaroslav_RegularCustomert_loginButton</item>
+                                            <item name="displayArea" xsi:type="string">yaRoslav-regularCustomer-loginButton</item>
                                         </item>
                                     </item>
                                 </item>

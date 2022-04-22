@@ -9,45 +9,45 @@
       "
 >
     <fieldset class="fieldset">
-        <br/>
-        <div class="field name required">
+        <br>
+        <div class="field name required" data-bind="visible: !isLoggedIn">
             <label class="label" for="ya-roslav-regular-customer-name">
                 <span translate="'Name'"></span>
             </label>
             <div class="control">
                 <input class="input-text"
                        data-bind="
-                            value: customerName,
                             attr: {
                                 title: $t('Name'),
                                 placeholder: $t('Name'),
-                            }
+                            },
+                            value: customerName
                        "
                        data-validate="{ required: true }"
                        id="ya-roslav-regular-customer-name"
                        name="name"
                        type="text"
-                />
+                >
             </div>
         </div>
-        <div class="field email required">
+        <div class="field email required" data-bind="visible: !isLoggedIn">
             <label class="label" for="ya-roslav-regular-customer-email">
                 <span translate="'Email'"></span>
             </label>
             <div class="control">
                 <input class="input-text"
                        data-bind="
-                            value: customerEmail,
                             attr: {
                                 title: $t('Email'),
                                 placeholder: $t('Email'),
-                            }
+                            },
+                            value: customerEmail
                        "
                        data-validate="{ required: true, 'validate-email': true }"
                        id="ya-roslav-regular-customer-email"
                        name="email"
                        type="email"
-                />
+                >
             </div>
         </div>
     </fieldset>
