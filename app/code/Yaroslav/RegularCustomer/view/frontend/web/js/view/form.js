@@ -47,9 +47,12 @@ define([
             this.observe(['customerName', 'customerEmail', 'customerMessage', 'isLoggedIn', 'productIds']);
 
             this.customerMustLogIn = ko.computed(() => {
-                return !this.allowForGuests && !this.isLoggedIn()
+                return !this.allowForGuests && !this.isLoggedIn();
             });
-            formSubmitRestrictions.customerMustLogIn = this.customerMustLogIn;
+            formSubmitRestrictions.customerMustLogIn(this.customerMustLogIn());
+            this.customerMustLogIn.subscribe((newValue) => {
+                formSubmitRestrictions.customerMustLogIn(newValue);
+            });
 
             this.formSubmitDeniedMessage = ko.computed(() => {
                     if (this.productIds().includes(this.productId)) {
@@ -62,7 +65,10 @@ define([
 
                 return '';
             });
-            formSubmitRestrictions.formSubmitDeniedMessage = this.formSubmitDeniedMessage;
+            formSubmitRestrictions.formSubmitDeniedMessage(this.formSubmitDeniedMessage());
+            this.formSubmitDeniedMessage.subscribe((newValue) => {
+                formSubmitRestrictions.formSubmitDeniedMessage(newValue);
+            });
 
             return this;
         },
