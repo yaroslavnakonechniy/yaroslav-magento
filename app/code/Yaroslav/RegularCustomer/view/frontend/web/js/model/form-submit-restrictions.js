@@ -4,6 +4,7 @@ define([
     'use strict';
 
     return {
-        formSubmitDeniedMessage: ko.observable()
+        customerMustLogIn: ko.observable(), // initialized in DVCampus_PersonalDiscount_form::initObservable()
+        formSubmitDeniedMessage: ko.observable() // initialized in DVCampus_PersonalDiscount_form::initObservable()
     };
 });

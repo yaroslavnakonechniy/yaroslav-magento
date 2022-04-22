@@ -31,6 +31,7 @@
                                                 />
                                                 <!-- Choose either `updater` or `xsi:type="helper"` -->
                                                 <item name="productId" xsi:type="number">0</item>
+                                                <item name="allowForGuests" xsi:type="boolean">false</item>
                                                 <!-- <item name="productId" xsi:type="helper" -->
                                                 <!-- helper="Yaroslav\RegularCustomer\Helper\CurrentProduct::getCurrentProductId" -->
                                                 <!--  /> -->
