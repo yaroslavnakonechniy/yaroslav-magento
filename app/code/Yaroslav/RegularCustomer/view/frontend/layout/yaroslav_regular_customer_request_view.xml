@@ -11,6 +11,7 @@
             <block class="Magento\Framework\View\Element\Template"
                    name="ya.roslav.regular.customer.request.list"
                    template="Yaroslav_RegularCustomer::customer/account/request_list.phtml"
+                   ifconfig="ya_roslav_regular_customer/general/enabled"
                    cacheable="false"
             >
                 <arguments>

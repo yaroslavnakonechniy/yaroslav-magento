@@ -8,6 +8,7 @@
                 <block class="Yaroslav\RegularCustomer\Block\Product\View\DiscountRequest"
                        name="ya.roslav.regular.customer.form"
                        template="Yaroslav_RegularCustomer::catalog/product/view/personal_discount_request/form.phtml"
+                       ifconfig="ya_roslav_regular_customer/general/enabled"
                        after="-"
                 >
                     <arguments>

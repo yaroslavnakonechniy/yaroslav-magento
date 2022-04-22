@@ -139,7 +139,7 @@ define([
             };
 
             submitFormAction(this.action, payload)
-                .done(() => {
+                .always(() => {
                     if (this.isModal) {
                         this.$modal.modal('closeModal')
                     }

@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace Yaroslav\RegularCustomer\Controller\Index;
 
+use Yaroslav\RegularCustomer\Controller\InvalidFormRequestException;
 use Yaroslav\RegularCustomer\Model\DiscountRequest;
 use Magento\Catalog\Model\ResourceModel\Product\Collection as ProductCollection;
 use Magento\Framework\App\Request\InvalidRequestException;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Controller\Result\Json;
+use Magento\Store\Model\ScopeInterface;
 
 class Request implements
     \Magento\Framework\App\Action\HttpPostActionInterface,
@@ -56,6 +58,11 @@ class Request implements
      */
     private \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory;
 
+    /**
+     * @var \Yaroslav\RegularCustomer\Model\Config $config
+     */
+    private \Yaroslav\RegularCustomer\Model\Config $config;
+
 
     public function __construct(
         \Magento\Framework\Controller\Result\JsonFactory $jsonFactory,
@@ -65,6 +72,7 @@ class Request implements
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Customer\Model\Session $customerSession,
         \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory,
+        \Yaroslav\RegularCustomer\Model\Config $config,
         \Psr\Log\LoggerInterface $logger
     ) {
         $this->jsonFactory = $jsonFactory;
@@ -74,6 +82,7 @@ class Request implements
         $this->storeManager = $storeManager;
         $this->logger = $logger;
         $this->productCollectionFactory = $productCollectionFactory;
+        $this->config = $config;
         $this->customerSession = $customerSession;
     }
 
@@ -86,8 +95,17 @@ class Request implements
     {
         /** @var DiscountRequest $discountRequest */
         $discountRequest = $this->discountRequestFactory->create();
+        $response = $this->jsonFactory->create();
 
         try {
+            if (!$this->config->enabled()) {
+                throw new InvalidFormRequestException();
+            }
+
+            if (!$this->customerSession->isLoggedIn() && !$this->config->allowForGuests()) {
+                throw new InvalidFormRequestException();
+            }
+
             $customerId = $this->customerSession->getCustomerId()
                 ? (int) $this->customerSession->getCustomerId()
                 : null;
@@ -128,16 +146,19 @@ class Request implements
                 $this->customerSession->setDiscountRequestProductIds(array_unique($productIds));
             }
 
-            $message = __('You request for product %1 accepted for review!', $this->request->getParam('productName'));
+            return $response->setData([
+                'message' => __(
+                    'You request for product %1 accepted for review!',
+                    $this->request->getParam('productName')
+                )
+            ]);
         } catch (\Exception $e) {
-            $this->logger->error($e->getMessage());
-            $message = __('Your request can\'t be sent. Please, contact us if you see this message.');
+            if (!($e instanceof InvalidFormRequestException)) {
+                $this->logger->error($e->getMessage());
+            }
         }
 
-        return $this->jsonFactory->create()
-            ->setData([
-                'message' => $message
-            ]);
+        return $response->setHttpResponseCode(400);
     }
 
     /**

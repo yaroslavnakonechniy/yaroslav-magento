@@ -31,18 +31,26 @@ class CustomerRequestsProvider
     private DiscountRequestCollection $discountRequestCollection;
 
     /**
+     * @var \Magento\Customer\Model\Config\Share $shareConfig
+     */
+    private \Magento\Customer\Model\Config\Share $shareConfig;
+
+    /**
      * @param DiscountRequestCollectionFactory $discountRequestCollectionFactory
      * @param \Magento\Customer\Model\Session $customerSession
      * @param \Magento\Store\Model\StoreManagerInterface $storeManager
+     * @param \Magento\Customer\Model\Config\Share $shareConfig
      */
     public function __construct(
         DiscountRequestCollectionFactory $discountRequestCollectionFactory,
         \Magento\Customer\Model\Session $customerSession,
-        \Magento\Store\Model\StoreManagerInterface $storeManager
+        \Magento\Store\Model\StoreManagerInterface $storeManager,
+        \Magento\Customer\Model\Config\Share $shareConfig
     ) {
         $this->discountRequestCollectionFactory = $discountRequestCollectionFactory;
         $this->customerSession = $customerSession;
         $this->storeManager = $storeManager;
+        $this->shareConfig = $shareConfig;
     }
 
     /**
@@ -63,8 +71,14 @@ class CustomerRequestsProvider
         /** @var DiscountRequestCollection $collection */
         $collection = $this->discountRequestCollectionFactory->create();
         $collection->addFieldToFilter('customer_id', $this->customerSession->getCustomerId());
-        // @TODO: check if accounts are shared per website or not
-        $collection->addFieldToFilter('store_id', ['in' => $website->getStoreIds()]);
+
+        // We need to decide whether we want to show requests from other websites or not
+        // Maybe we can add config for this and show website name/url in case the request is from another website
+        // A simple way to handle this is always adding the filter
+        if ($this->shareConfig->isWebsiteScope()) {
+            $collection->addFieldToFilter('store_id', ['in' => $website->getStoreIds()]);
+        }
+
         $this->discountRequestCollection = $collection;
 
         return $this->discountRequestCollection;

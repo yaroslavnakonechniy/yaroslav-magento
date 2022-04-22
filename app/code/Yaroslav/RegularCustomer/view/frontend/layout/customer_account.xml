@@ -6,6 +6,7 @@
         <referenceBlock name="customer_account_navigation">
             <block class="Magento\Customer\Block\Account\SortLinkInterface"
                    name="customer-account-navigation-personal-discount"
+                   ifconfig="ya_roslav_regular_customer/general/enabled"
             >
                 <arguments>
                     <argument name="path" xsi:type="string">ya-roslav-regular-customer/request/view</argument>
