@@ -16,6 +16,8 @@ namespace Yaroslav\RegularCustomer\Model;
  * @method $this setEmail(string $name)
  * @method string|null getAdminUserId()
  * @method $this setAdminUserId(string $admin_user_id)
+ * @method int|string getStatus()
+ * @method $this setStatus(int $status)
  * @method int|string|null getStoreId()
  * @method $this setStoreId(int $websiteId)
  * @method int|string|null getCreatedAt()
@@ -23,6 +25,10 @@ namespace Yaroslav\RegularCustomer\Model;
  */
 class DiscountRequest extends \Magento\Framework\Model\AbstractModel
 {
+    public const STATUS_PENDING = 1;
+    public const STATUS_APPROVED = 2;
+    public const STATUS_DECLINED = 3;
+
     /**
      * @inheritDoc
      */

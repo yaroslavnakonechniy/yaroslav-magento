@@ -20,6 +20,9 @@
         <column xsi:type="int" name="admin_user_id" padding="10" unsigned="true" nullable="true"
                 comment="Admin User ID"
         />
+        <column xsi:type="smallint" name="status" padding="2" unsigned="true" nullable="false" default="1"
+                comment="Status"
+        />
         <column xsi:type="smallint" name="store_id" padding="5" unsigned="true" nullable="true"
                 comment="Store ID"
         />

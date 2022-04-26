@@ -89,7 +89,7 @@
             </settings>
         </column>
         <!-- Note that guest customers do not have ID! In this case column must be empty -->
-        <column name="customer_id" component="Magento_Ui/js/grid/columns/link" sortOrder="35">
+        <column name="customer_id" component="Magento_Ui/js/grid/columns/link" sortOrder="40">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="link" xsi:type="string">customer_link</item>
@@ -101,7 +101,7 @@
                 <label translate="true">Customer ID</label>
             </settings>
         </column>
-        <column name="name" component="Magento_Ui/js/grid/columns/link" sortOrder="40">
+        <column name="name" component="Magento_Ui/js/grid/columns/link" sortOrder="50">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="link" xsi:type="string">customer_link</item>
@@ -113,7 +113,7 @@
                 <label translate="true">Customer Name</label>
             </settings>
         </column>
-        <column name="email" sortOrder="50">
+        <column name="email" sortOrder="60">
             <settings>
                 <filter>text</filter>
                 <sorting>asc</sorting>
@@ -128,7 +128,15 @@
                 <label translate="true">Message</label>
             </settings>
         </column>
-        <column name="store_id" class="Magento\Store\Ui\Component\Listing\Column\Store">
+        <column name="status" component="Magento_Ui/js/grid/columns/select" sortOrder="70">
+            <settings>
+                <label translate="true">Status</label>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <options class="Yaroslav\RegularCustomer\Ui\Component\DiscountRequest\Source\Status"/>
+            </settings>
+        </column>
+        <column name="store_id" class="Magento\Store\Ui\Component\Listing\Column\Store" sortOrder="80">
             <settings>
                 <label translate="true">Store View</label>
                 <bodyTmpl>ui/grid/cells/html</bodyTmpl>
@@ -138,7 +146,9 @@
                 <options class="Magento\Store\Ui\Component\Listing\Column\Store\Options"/>
             </settings>
         </column>
-        <actionsColumn name="actions" class="Yaroslav\RegularCustomer\Ui\Component\DiscountRequest\Listing\Column\BlockActions">
+        <actionsColumn name="actions"
+                       class="Yaroslav\RegularCustomer\Ui\Component\DiscountRequest\Listing\Column\BlockActions"
+        >
             <settings>
                 <indexField>request_id</indexField>
             </settings>

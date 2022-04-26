@@ -12,9 +12,26 @@ $viewModel = $block->getData('view_model');
     <?php foreach ($viewModel->getDiscountRequestCollection() as $discountRequest): ?>
         <?php $product = $viewModel->getProduct((int) $discountRequest->getProductId()); ?>
         <li>
-            <span><?= $escaper->escapeHtml(__('Requested product: %1', $product ? $product->getName() : '-')) ?></span>
-            <br/>
+            <?php if ($product): ?>
+                <span><?= $escaper->escapeHtml(__('Requested product:')) ?></span>
+                <a href="<?= $escaper->escapeHtmlAttr($product->getProductUrl()) ?>">
+                    <?= $escaper->escapeHtml($product->getName()) ?>
+                </a>
+            <?php else: ?>
+                <?php
+                /**
+                 * 1. Here we use concat because only the phrase 'Requested product:' is translated
+                 * 2. $discountRequest->getProductName() - to be implemented in the future
+                 */
+                ?>
+                <span>
+                    <?= $escaper->escapeHtml(__('Requested product:') . ' n/a'/*$discountRequest->getProductName()*/) ?>
+                </span>
+            <?php endif; ?>
+            <br>
             <span><?= $escaper->escapeHtml(__('Message: %1', $discountRequest->getMessage())) ?></span>
+            <br>
+            <span><?= $escaper->escapeHtml(__('Status: %1', $viewModel->getStatusLabel($discountRequest))) ?></span>
         </li>
     <?php endforeach; ?>
 </ul>
