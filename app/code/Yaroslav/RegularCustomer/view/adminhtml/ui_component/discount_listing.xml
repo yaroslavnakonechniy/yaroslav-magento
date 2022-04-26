@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd"
+>
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">discount_listing.discount_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>discount_columns</spinner>
+        <deps>
+            <dep>discount_listing.discount_listing_data_source</dep>
+        </deps>
+        <buttons>
+            <button name="add">
+                <url path="*/*/newRequest"/>
+                <class>primary</class>
+                <label translate="true">Add New Request</label>
+            </button>
+        </buttons>
+    </settings>
+    <dataSource name="discount_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">discount_request_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Yaroslav_RegularCustomer::listing</aclResource>
+        <dataProvider class="Yaroslav\RegularCustomer\Ui\Component\DiscountListingDataProvider" name="discount_listing_data_source">
+            <settings>
+                <requestFieldName>discount_request_id</requestFieldName>
+                <primaryFieldName>discount_request_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filterSearch name="fulltext"/>
+        <filters name="listing_filters"/>
+        <exportButton name="export_button"/>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="discount_columns">
+        <settings>
+            <editorConfig>
+                <param name="enabled" xsi:type="boolean">false</param>
+            </editorConfig>
+        </settings>
+        <selectionsColumn name="ids" sortOrder="0">
+            <settings>
+                <indexField>discount_request_id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="discount_request_id" sortOrder="10">
+            <settings>
+                <filter>textRange</filter>
+                <sorting>asc</sorting>
+                <label translate="true">Discount Request ID</label>
+            </settings>
+        </column>
+        <column name="product_id" component="Magento_Ui/js/grid/columns/link" sortOrder="20">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="link" xsi:type="string">product_link</item>
+                </item>
+            </argument>
+            <settings>
+                <filter>textRange</filter>
+                <sorting>asc</sorting>
+                <label translate="true">Product ID</label>
+            </settings>
+        </column>
+        <column name="product_name"  sortOrder="30">
+            <settings>
+                <label translate="true">Product Name</label>
+                <sortable>false</sortable>
+                <filter>false</filter>
+            </settings>
+        </column>
+        <!-- Note that guest customers do not have ID! In this case column must be empty -->
+        <column name="name" sortOrder="40">
+            <settings>
+                <filter>textRange</filter>
+                <sorting>asc</sorting>
+                <label translate="true">Customer Name</label>
+            </settings>
+        </column>
+        <column name="email" sortOrder="50">
+            <settings>
+                <filter>textRange</filter>
+                <sorting>asc</sorting>
+                <label translate="true">Customer Email</label>
+            </settings>
+        </column>
+        <!-- @TODO: show message preview instead of the whole text. This should still be filterable -->
+        <column name="message" sortOrder="60">
+            <settings>
+                <filter>textRange</filter>
+                <sorting>asc</sorting>
+                <label translate="true">Message</label>
+            </settings>
+        </column>
+        <column name="store_id" class="Magento\Store\Ui\Component\Listing\Column\Store">
+            <settings>
+                <label translate="true">Store View</label>
+                <bodyTmpl>ui/grid/cells/html</bodyTmpl>
+                <sortable>false</sortable>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <options class="Magento\Store\Ui\Component\Listing\Column\Store\Options"/>
+            </settings>
+        </column>
+    </columns>
+</listing>
