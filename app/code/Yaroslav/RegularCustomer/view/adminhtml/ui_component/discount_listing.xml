@@ -46,7 +46,7 @@
         <exportButton name="export_button"/>
         <paging name="listing_paging"/>
     </listingToolbar>
-    <columns name="discount_columns">
+    <columns name="discount_columns" template="Yaroslav_RegularCustomer/ui/grid/listing">
         <settings>
             <editorConfig>
                 <param name="enabled" xsi:type="boolean">false</param>
