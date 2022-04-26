@@ -76,7 +76,12 @@
                 <label translate="true">Product ID</label>
             </settings>
         </column>
-        <column name="product_name"  sortOrder="30">
+        <column name="product_name" component="Magento_Ui/js/grid/columns/link" sortOrder="30">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="link" xsi:type="string">product_link</item>
+                </item>
+            </argument>
             <settings>
                 <label translate="true">Product Name</label>
                 <sortable>false</sortable>
@@ -84,16 +89,33 @@
             </settings>
         </column>
         <!-- Note that guest customers do not have ID! In this case column must be empty -->
-        <column name="name" sortOrder="40">
+        <column name="customer_id" component="Magento_Ui/js/grid/columns/link" sortOrder="35">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="link" xsi:type="string">customer_link</item>
+                </item>
+            </argument>
             <settings>
                 <filter>textRange</filter>
+                <sorting>asc</sorting>
+                <label translate="true">Customer ID</label>
+            </settings>
+        </column>
+        <column name="name" component="Magento_Ui/js/grid/columns/link" sortOrder="40">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="link" xsi:type="string">customer_link</item>
+                </item>
+            </argument>
+            <settings>
+                <filter>text</filter>
                 <sorting>asc</sorting>
                 <label translate="true">Customer Name</label>
             </settings>
         </column>
         <column name="email" sortOrder="50">
             <settings>
-                <filter>textRange</filter>
+                <filter>text</filter>
                 <sorting>asc</sorting>
                 <label translate="true">Customer Email</label>
             </settings>
@@ -101,7 +123,7 @@
         <!-- @TODO: show message preview instead of the whole text. This should still be filterable -->
         <column name="message" sortOrder="60">
             <settings>
-                <filter>textRange</filter>
+                <filter>text</filter>
                 <sorting>asc</sorting>
                 <label translate="true">Message</label>
             </settings>

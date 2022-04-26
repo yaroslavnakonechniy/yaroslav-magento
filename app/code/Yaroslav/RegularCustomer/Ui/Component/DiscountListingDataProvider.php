@@ -73,16 +73,25 @@ class DiscountListingDataProvider extends \Magento\Framework\View\Element\UiComp
             ->addIdFilter(array_column($data['items'], 'product_id'));
 
         foreach ($data['items'] as &$item) {
-            if (!$item['product_id']) {
+            if ($item['product_id']) {
+                $item['product_link'] = $this->urlBuilder->getUrl(
+                    'catalog/product/edit',
+                    ['id' => $item['product_id']]
+                );
+                /** @var Product $product */
+                $product = $productCollection->getItemById($item['product_id']);
+                $item['product_name'] = $product->getName();
+            } else {
                 $item['product_name'] = 'n/a';
 
-                continue;
             }
 
-            $item['product_link'] = $this->urlBuilder->getUrl('catalog/product/edit', ['id' => $item['product_id']]);
-            /** @var Product $product */
-            $product = $productCollection->getItemById($item['product_id']);
-            $item['product_name'] = $product->getName();
+            if ($item['customer_id']) {
+                $item['customer_link'] = $this->urlBuilder->getUrl(
+                    'customer/index/edit',
+                    ['id' => $item['customer_id']]
+                );
+            }
         }
 
         return $data;
