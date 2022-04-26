@@ -23,15 +23,15 @@
     <dataSource name="discount_listing_data_source" component="Magento_Ui/js/grid/provider">
         <settings>
             <storageConfig>
-                <param name="indexField" xsi:type="string">discount_request_id</param>
+                <param name="indexField" xsi:type="string">request_id</param>
             </storageConfig>
             <updateUrl path="mui/index/render"/>
         </settings>
         <aclResource>Yaroslav_RegularCustomer::listing</aclResource>
         <dataProvider class="Yaroslav\RegularCustomer\Ui\Component\DiscountListingDataProvider" name="discount_listing_data_source">
             <settings>
-                <requestFieldName>discount_request_id</requestFieldName>
-                <primaryFieldName>discount_request_id</primaryFieldName>
+                <requestFieldName>request_id</requestFieldName>
+                <primaryFieldName>request_id</primaryFieldName>
             </settings>
         </dataProvider>
     </dataSource>
@@ -54,10 +54,10 @@
         </settings>
         <selectionsColumn name="ids" sortOrder="0">
             <settings>
-                <indexField>discount_request_id</indexField>
+                <indexField>request_id</indexField>
             </settings>
         </selectionsColumn>
-        <column name="discount_request_id" sortOrder="10">
+        <column name="request_id" sortOrder="10">
             <settings>
                 <filter>textRange</filter>
                 <sorting>asc</sorting>
@@ -116,5 +116,10 @@
                 <options class="Magento\Store\Ui\Component\Listing\Column\Store\Options"/>
             </settings>
         </column>
+        <actionsColumn name="actions" class="Yaroslav\RegularCustomer\Ui\Component\DiscountRequest\Listing\Column\BlockActions">
+            <settings>
+                <indexField>request_id</indexField>
+            </settings>
+        </actionsColumn>
     </columns>
 </listing>

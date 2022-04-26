@@ -12,7 +12,9 @@ class Index extends \Magento\Backend\App\Action implements \Magento\Framework\Ap
     public const ADMIN_RESOURCE = 'Yaroslav_RegularCustomer::listing';
 
     /**
-     * @inheritDoc
+     * Index action
+     *
+     * @return ResultInterface
      */
     public function execute(): ResultInterface
     {
