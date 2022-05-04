@@ -6,6 +6,7 @@
         <arguments>
             <argument name="collections" xsi:type="array">
                 <item name="discount_listing_data_source" xsi:type="string">Yaroslav\RegularCustomer\Model\ResourceModel\Discounts\Grid\Collection</item>
+                <item name="discount_form_data_source" xsi:type="string">Yaroslav\RegularCustomer\Model\ResourceModel\Discounts\Grid\Collection</item>
             </argument>
         </arguments>
     </type>
