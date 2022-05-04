@@ -51,21 +51,26 @@ class Delete implements \Magento\Framework\View\Element\UiComponent\Control\Butt
             $this->escaper->escapeHtml(__('Are you sure you want to delete this discount request?'))
         );
         $discountRequestId = (int) $this->request->getParam('request_id');
+        $buttonConfiguration = [];
 
-        return [
-            'label' => __('Delete'),
-            'class' => 'delete primary',
-            'on_click' => "deleteConfirm('$message', '$url', {data:{request_id:$discountRequestId}})",
-            'data_attribute' => [
-                'mage_init' => [
-                    'button' => [
-                        'event' => 'delete'
+        if ($discountRequestId) {
+            $buttonConfiguration = [
+                'label' => __('Delete'),
+                'class' => 'delete primary',
+                'on_click' => "deleteConfirm('$message', '$url', {data:{request_id:$discountRequestId}})",
+                'data_attribute' => [
+                    'mage_init' => [
+                        'button' => [
+                            'event' => 'delete'
+                        ],
                     ],
+                    'form-role' => 'delete'
                 ],
-                'form-role' => 'delete'
-            ],
-            'aclResource' => Authorization::ACTION_DISCOUNT_REQUEST_DELETE,
-            'sort_order' => 20
-        ];
+                'aclResource' => Authorization::ACTION_DISCOUNT_REQUEST_DELETE,
+                'sort_order' => 20
+            ];
+        }
+
+        return $buttonConfiguration;
     }
 }
