@@ -1,7 +1,27 @@
 .data-grid tr.status-approved td {
-    background-color: @color-sky-blue1;
+    background-color: lighten(@color-blue1, 45%);
+}
+
+.data-grid tr.status-approved._odd-row {
+    &:hover td {
+        background-color: @data-grid-tr__hover__background-color;
+    }
+
+    td {
+        background-color: lighten(@color-blue1, 40%);
+    }
 }
 
 .data-grid tr.status-declined td {
-    background-color: @color-orange-red4;
+    background-color: lighten(@color-orange-red1, 45%);
+}
+
+.data-grid tr.status-declined._odd-row {
+    &:hover td {
+        background-color: @data-grid-tr__hover__background-color;
+    }
+
+    td {
+        background-color: lighten(@color-orange-red1, 40%);
+    }
 }
