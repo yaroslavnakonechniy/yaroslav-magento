@@ -67,41 +67,45 @@ class BlockActions extends \Magento\Ui\Component\Listing\Columns\Column
      */
     public function prepareDataSource(array $dataSource): array
     {
+        if (!isset($dataSource['data']['items'])) {
+            return $dataSource;
+        }
+
         $editAllowed = $this->authorization->isAllowed(Authorization::ACTION_DISCOUNT_REQUEST_EDIT);
         $deleteAllowed = $this->authorization->isAllowed(Authorization::ACTION_DISCOUNT_REQUEST_DELETE);
 
-        if (isset($dataSource['data']['items'])) {
-            foreach ($dataSource['data']['items'] as &$item) {
-                if (isset($item['request_id'])) {
-                    if ($editAllowed) {
-                        $item[$this->getData('name')]['edit'] = [
-                            'href' => $this->urlBuilder->getUrl(
-                                static::URL_PATH_EDIT,
-                                [
-                                    'request_id' => $item['request_id'],
-                                ]
-                            ),
-                            'label' => __('Edit')
-                        ];
-                    }
+        foreach ($dataSource['data']['items'] as &$item) {
+            if (!isset($item['discount_request_id'])) {
+                continue;
+            }
 
-                    if ($deleteAllowed) {
-                        $item[$this->getData('name')]['delete'] = [
-                            'href' => $this->urlBuilder->getUrl(
-                                static::URL_PATH_DELETE,
-                                [
-                                    'request_id' => $item['request_id'],
-                                ]
-                            ),
-                            'label' => __('Delete'),
-                            'confirm' => [
-                                'title' => __('Delete'),
-                                'message' => __('Are you sure you want to delete this request?'),
-                            ],
-                            'post' => true
-                        ];
-                    }
-                }
+            if ($editAllowed) {
+                $item[$this->getData('name')]['edit'] = [
+                    'href' => $this->urlBuilder->getUrl(
+                        static::URL_PATH_EDIT,
+                        [
+                            'discount_request_id' => $item['discount_request_id'],
+                        ]
+                    ),
+                    'label' => __('Edit')
+                ];
+            }
+
+            if ($deleteAllowed) {
+                $item[$this->getData('name')]['delete'] = [
+                    'href' => $this->urlBuilder->getUrl(
+                        static::URL_PATH_DELETE,
+                        [
+                            'discount_request_id' => $item['discount_request_id'],
+                        ]
+                    ),
+                    'label' => __('Delete'),
+                    'confirm' => [
+                        'title' => __('Delete'),
+                        'message' => __('Are you sure you want to delete this request?'),
+                    ],
+                    'post' => true
+                ];
             }
         }
 
