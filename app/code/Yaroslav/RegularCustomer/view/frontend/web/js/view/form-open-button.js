@@ -20,9 +20,9 @@ define([
             this._super();
 
             // Check whether it is possible to open the modal - either form is modal or there are any other restrictions
-            this.canShowOpenModalButton = ko.computed(function () {
-                return this.isModal && !formSubmitRestrictions.formSubmitDeniedMessage();
-            }.bind(this));
+            this.canShowOpenModalButton = ko.computed(() => {
+                return this.isModal && !formSubmitRestrictions.submitDenied();
+            });
 
             return this;
         },

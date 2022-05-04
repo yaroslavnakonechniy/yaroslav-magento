@@ -13,7 +13,6 @@ define([
     return Component.extend({
         defaults: {
             action: '',
-            allowForGuests: false,
             isModal: true,
             productId: 0,
             template: 'Yaroslav_RegularCustomer/form'
@@ -29,7 +28,7 @@ define([
          * Constructor
          */
         initialize: function () {
-            this._super()
+            this._super();
 
             this.updateFormState(customerData.get('personal-discount')());
             customerData.get('personal-discount').subscribe(this.updateFormState.bind(this));
@@ -46,28 +45,21 @@ define([
             // Watch isLoggedIn and productIds because they come from the server
             this.observe(['customerName', 'customerEmail', 'customerMessage', 'isLoggedIn', 'productIds']);
 
-            this.customerMustLogIn = ko.computed(() => {
-                return !this.allowForGuests && !this.isLoggedIn();
-            });
-            formSubmitRestrictions.customerMustLogIn(this.customerMustLogIn());
-            this.customerMustLogIn.subscribe((newValue) => {
-                formSubmitRestrictions.customerMustLogIn(newValue);
+            // "updateFormState()" will be called later, so no need to set initial value for "requestAlreadySent()"
+            this.productIds.subscribe((newValue) => {
+                formSubmitRestrictions.requestAlreadySent(newValue.includes(this.productId));
             });
 
             this.formSubmitDeniedMessage = ko.computed(() => {
-                    if (this.productIds().includes(this.productId)) {
+                if (formSubmitRestrictions.requestAlreadySent()) {
                         return $.mage.__('Discount request for this product has already been sent');
                     }
 
-                    if (this.customerMustLogIn()) {
+                if (formSubmitRestrictions.customerMustLogIn()) {
                         return $.mage.__('Please, log in to send a request');
                     }
 
                 return '';
-            });
-            formSubmitRestrictions.formSubmitDeniedMessage(this.formSubmitDeniedMessage());
-            this.formSubmitDeniedMessage.subscribe((newValue) => {
-                formSubmitRestrictions.formSubmitDeniedMessage(newValue);
             });
 
             return this;
@@ -140,13 +132,13 @@ define([
                 message: this.customerMessage(),
                 'product_id': this.productId,
                 'form_key': $.mage.cookies.get('form_key'),
-                isAjax: 1,
+                isAjax: 1
             };
 
             submitFormAction(this.action, payload)
                 .always(() => {
                     if (this.isModal) {
-                        this.$modal.modal('closeModal')
+                        this.$modal.modal('closeModal');
                     }
 
                 });

@@ -10,7 +10,7 @@
 >
     <fieldset class="fieldset">
         <br>
-        <div class="field name required" data-bind="visible: !isLoggedIn">
+        <div class="field name required" data-bind="visible: !isLoggedIn()">
             <label class="label" for="ya-roslav-regular-customer-name">
                 <span translate="'Name'"></span>
             </label>
@@ -30,7 +30,7 @@
                 >
             </div>
         </div>
-        <div class="field email required" data-bind="visible: !isLoggedIn">
+        <div class="field email required" data-bind="visible: !isLoggedIn()">
             <label class="label" for="ya-roslav-regular-customer-email">
                 <span translate="'Email'"></span>
             </label>

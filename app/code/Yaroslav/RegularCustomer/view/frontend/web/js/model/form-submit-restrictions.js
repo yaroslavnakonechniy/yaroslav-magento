@@ -3,8 +3,15 @@ define([
 ], function (ko) {
     'use strict';
 
-    return {
-        customerMustLogIn: ko.observable(), // initialized in DVCampus_PersonalDiscount_form::initObservable()
-        formSubmitDeniedMessage: ko.observable() // initialized in DVCampus_PersonalDiscount_form::initObservable()
+    let formSubmitDeniedRestrictions = {
+        customerMustLogIn: ko.observable(false),
+        requestAlreadySent: ko.observable(false)
     };
+
+    // Can't use "this" here. Probably this is because we're not in the component context?
+    formSubmitDeniedRestrictions.submitDenied = ko.computed(function () {
+        return formSubmitDeniedRestrictions.customerMustLogIn() || formSubmitDeniedRestrictions.requestAlreadySent();
+    });
+
+    return formSubmitDeniedRestrictions;
 });

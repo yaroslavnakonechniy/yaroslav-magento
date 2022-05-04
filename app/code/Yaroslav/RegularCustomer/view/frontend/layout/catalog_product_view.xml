@@ -31,10 +31,6 @@
                                                 />
                                                 <!-- Choose either `updater` or `xsi:type="helper"` -->
                                                 <item name="productId" xsi:type="number">0</item>
-                                                <item name="allowForGuests" xsi:type="boolean">false</item>
-                                                <!-- <item name="productId" xsi:type="helper" -->
-                                                <!-- helper="Yaroslav\RegularCustomer\Helper\CurrentProduct::getCurrentProductId" -->
-                                                <!--  /> -->
                                             </item>
                                         </item>
                                         <item name="regularCustomerRequestFormOpenButton" xsi:type="array">
@@ -49,6 +45,9 @@
                                         <item name="regularCustomerRequestLoginButton" xsi:type="array">
                                             <item name="component" xsi:type="string">Yaroslav_RegularCustomert_loginButton</item>
                                             <item name="displayArea" xsi:type="string">yaRoslav-regularCustomer-loginButton</item>
+                                            <item name="config" xsi:type="array">
+                                                <item name="allowForGuests" xsi:type="boolean">false</item>
+                                            </item>
                                         </item>
                                     </item>
                                 </item>
